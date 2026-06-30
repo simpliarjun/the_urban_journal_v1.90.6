@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>About - The Urban Journal</title>
+	<meta name="robots" content="index, follow">
+	<link rel="canonical" href="https://the-urban-journal.com/about/">
+	
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,400&family=DM+Serif+Display:ital@0;1&family=Roboto:ital,wght@0,300;0,400;0,700;1,400&family=DM+Serif+Text:ital@0;1&family=Roboto+Slab:wght@300;400;700&family=Roboto+Mono:ital,wght@0,300;0,400;0,700;1,400&family=Averia+Sans+Libre:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+	
+	<!-- WordPress & Theme Core Stylesheets -->
+	<link rel="stylesheet" href="../wp-includes/css/dist/block-library/style.min.css">
+	<link rel="stylesheet" href="../wp-content/plugins/ultimate-addons-for-gutenberg/dist/blocks.css">
+	<link rel="stylesheet" href="../wp-content/themes/personalblogily/style.css">
+	<link rel="stylesheet" href="../wp-content/themes/simply-personal-blog/style.css">
+	
+	<!-- Page/Post Specific Stylesheets -->
+	
+	
+	<!-- Responsive Mobile Styling & Pure CSS Mobile Menu -->
+	<style>
+		/* Floating Side Navigation on Desktop */
+		@media (min-width: 1200px) {
+			.side-nav {
+				position: fixed;
+				left: 40px;
+				top: 50%;
+				transform: translateY(-50%);
+				z-index: 999;
+				display: flex;
+				flex-direction: column;
+				gap: 18px;
+				background: #ffffff;
+				padding: 22px 16px;
+				border-radius: 6px;
+				box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+				border: 1px solid #e0e0e0;
+				transition: all 0.3s ease;
+				
+				/* Default state for older/unsupported browsers (always visible) */
+				opacity: 1;
+				visibility: visible;
+			}
+			
+			/* Dynamic scroll-driven animation for modern browsers */
+			@supports (animation-timeline: scroll()) {
+				@keyframes show-side-nav {
+					0% {
+						opacity: 0;
+						visibility: hidden;
+						transform: translateY(-50%) scale(0.95);
+					}
+					100% {
+						opacity: 1;
+						visibility: visible;
+						transform: translateY(-50%) scale(1);
+					}
+				}
+				.side-nav {
+					animation: show-side-nav linear both;
+					animation-timeline: scroll();
+					animation-range: 140px 220px; /* Appears after scrolling past the top nav (140px-220px) */
+				}
+			}
+
+			.side-nav a {
+				font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+				font-size: 12px;
+				color: #444;
+				text-decoration: none;
+				font-weight: 600;
+				text-transform: uppercase;
+				letter-spacing: 1px;
+				transition: color 0.2s ease, transform 0.2s ease;
+				display: block;
+				text-align: center;
+			}
+			.side-nav a:hover {
+				color: #000000;
+				transform: scale(1.05);
+			}
+		}
+		@media (max-width: 1199px) {
+			.side-nav {
+				display: none !important;
+			}
+		}
+
+		/* Image Consistency and Justified Text */
+		.uagb-post__image img, 
+		.uagb-post__image a img {
+			width: 100% !important;
+			height: 240px !important;
+			object-fit: cover !important;
+		}
+		.uagb-post__excerpt p, 
+		.entry-content p {
+			text-align: justify !important;
+			text-justify: inter-word;
+		}
+
+		/* Fix for post grid layout */
+		.uagb-post-grid.is-grid {
+			display: grid !important;
+			grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+			gap: 30px !important;
+		}
+		@media (max-width: 976px) {
+			.uagb-post-grid.is-grid {
+				grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+				gap: 20px !important;
+			}
+		}
+		@media (max-width: 767px) {
+			.uagb-post-grid.is-grid {
+				grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+				gap: 15px !important;
+			}
+		}
+
+		.header-social-links a:hover {
+			color: #0073aa !important;
+			transform: scale(1.1);
+		}
+		.footer-social-links a:hover {
+			color: #ffffff !important;
+			transform: scale(1.1);
+		}
+
+		@media (max-width: 767px) {
+			.main-navigation {
+				display: block !important;
+			}
+			.site-branding {
+				flex-direction: column !important;
+				text-align: center !important;
+				justify-content: center !important;
+				gap: 15px !important;
+				padding: 20px 0 !important;
+			}
+			.branding-text {
+				text-align: center !important;
+			}
+			.site-title {
+				font-size: 28px !important;
+			}
+			.site-description {
+				font-size: 13px !important;
+			}
+			.header-social-links {
+				justify-content: center !important;
+				margin-top: 5px !important;
+			}
+			
+			/* Mobile Menu Toggle */
+			.menu-toggle-label {
+				display: block !important;
+				cursor: pointer;
+				padding: 12px 0;
+				font-size: 16px;
+				font-weight: 600;
+				text-transform: uppercase;
+				border-top: 1px solid #eaeaea;
+				border-bottom: 1px solid #eaeaea;
+				background-color: #fafafa;
+				color: #333;
+				letter-spacing: 1px;
+			}
+			
+			/* Hide desktop menu on mobile by default */
+			.center-main-menu {
+				display: none;
+				width: 100%;
+			}
+			
+			/* Show menu when checkbox is checked */
+			#menu-toggle-checkbox:checked ~ .center-main-menu {
+				display: block !important;
+			}
+			
+			/* Stack mobile menu items */
+			.pmenu {
+				display: flex !important;
+				flex-direction: column !important;
+				align-items: center !important;
+				padding: 15px 0 !important;
+				float: none !important;
+				margin: 0 !important;
+			}
+			.pmenu li {
+				display: block !important;
+				margin: 8px 0 !important;
+				float: none !important;
+			}
+			.pmenu li a {
+				padding: 8px 20px !important;
+				font-size: 15px !important;
+			}
+		}
+	</style>
+</head>
+
+<body class="page-template-default page">
+
+	<div class="side-nav">
+		<a href="../index.html">Home</a><a href="../about/index.html">About</a><a href="../https-the-urban-journal-com-latest-blogs/index.html">Blogs</a><a href="../events/index.html">Events</a>
+	</div>
+
+	<div id="page" class="site">
+
+		<header id="masthead" class="sheader site-header clearfix">
+			<div class="content-wrap">
+				<div class="site-branding" style="display: flex; align-items: center; justify-content: space-between; text-align: left; gap: 20px; width: 100%;">
+					<div style="display: flex; align-items: center; gap: 20px;">
+						<a href="../index.html" class="branding-logo-link" style="display: inline-block; flex-shrink: 0;">
+							<img src="../wp-content/uploads/2025/07/cropped-cropped-final_logo_TUJ-removebg-preview-300x300.png" alt="The Urban Journal Logo" style="width: 80px; height: 80px; max-height: 80px; object-fit: contain; display: block;" />
+						</a>
+						<div class="branding-text">
+							<p class="site-title" style="font-family: 'Times New Roman', Times, serif; font-size: 36px; margin: 0; font-weight: bold; line-height: 1.2;">
+								<a href="../index.html" rel="home" style="text-decoration: none; color: #000;">The Urban Journal</a>
+							</p>
+							<p class="site-description" style="margin: 5px 0 0 0; font-size: 15px; color: #666;">Politics, Psyche and Personal Truth</p>
+						</div>
+					</div>
+					<div class="header-social-links" style="display: flex; align-items: center; gap: 20px; flex-shrink: 0;">
+						<a href="https://x.com/JournalThe40534" target="_blank" rel="noopener noreferrer" class="social-link-x" title="X (Twitter)" style="color: #444; padding: 6px; text-decoration: none; transition: all 0.2s ease; display: inline-block;">
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="display: block;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+						</a>
+						<a href="https://www.instagram.com/theurbanjournall?igsh=MXY2ZmZiNmt2ZmNkZQ==" target="_blank" rel="noopener noreferrer" class="social-link-instagram" title="Instagram" style="color: #444; padding: 6px; text-decoration: none; transition: all 0.2s ease; display: inline-block;">
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+						</a>
+						<a href="https://in.linkedin.com/company/the-urban-journall" target="_blank" rel="noopener noreferrer" class="social-link-linkedin" title="LinkedIn" style="color: #444; padding: 6px; text-decoration: none; transition: all 0.2s ease; display: inline-block;">
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<nav id="primary-site-navigation" class="primary-menu main-navigation clearfix">
+				<div class="content-wrap text-center">
+					<input type="checkbox" id="menu-toggle-checkbox" style="display: none;">
+					<label for="menu-toggle-checkbox" class="menu-toggle-label" style="display: none;">
+						<span>☰ Menu</span>
+					</label>
+					
+					<div class="center-main-menu">
+						<ul id="primary-menu" class="pmenu">
+							<li class="menu-item "><a href="../index.html">Home</a></li><li class="menu-item current-menu-item"><a href="../about/index.html">About</a></li><li class="menu-item "><a href="../https-the-urban-journal-com-latest-blogs/index.html">Blogs</a></li><li class="menu-item "><a href="../events/index.html">Events</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</header>
+
+		<div id="content" class="site-content clearfix">
+			<div class="content-wrap">
+<!-- wp:uagb/advanced-heading {"block_id":"c4d6195c","classMigrate":true,"headingDescToggle":false} -->
+<div class="wp-block-uagb-advanced-heading uagb-block-c4d6195c"><h2 class="uagb-heading-text">From the author </h2></div>
+<!-- /wp:uagb/advanced-heading -->
+
+<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:uagb/image {"block_id":"4e7304e1","url":"/wp-content/uploads/2025/06/NAVY-BLUE-PHOTO-1-1024x1010.jpg","urlTablet":"/wp-content/uploads/2025/06/NAVY-BLUE-PHOTO-1.jpg","urlMobile":"/wp-content/uploads/2025/06/NAVY-BLUE-PHOTO-1.jpg","alt":"Image of the author","id":2269,"linkDestination":"none","title":"NAVY BLUE PHOTO","width":1020,"height":962,"naturalWidth":1280,"naturalHeight":1262,"sizeSlug":"large","sizeSlugTablet":"large","sizeSlugMobile":"large","customHeightSetDesktop":true} -->
+<div class="wp-block-uagb-image uagb-block-4e7304e1 wp-block-uagb-image--layout-default wp-block-uagb-image--effect-static wp-block-uagb-image--align-none"><figure class="wp-block-uagb-image__figure"><img srcset="/wp-content/uploads/2025/06/NAVY-BLUE-PHOTO-1-1024x1010.jpg ,/wp-content/uploads/2025/06/NAVY-BLUE-PHOTO-1.jpg 780w, /wp-content/uploads/2025/06/NAVY-BLUE-PHOTO-1.jpg 360w" sizes="(max-width: 480px) 150px" src="../wp-content/uploads/2025/06/NAVY-BLUE-PHOTO-1-1024x1010.jpg" alt="Image of the author" class="uag-image-2269" width="1020" height="962" title="NAVY BLUE PHOTO" loading="lazy" role="img"/></figure></div>
+<!-- /wp:uagb/image -->
+
+<!-- wp:paragraph -->
+<p>&nbsp;</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"fontSize":"medium"} -->
+<p class="has-medium-font-size"><strong>Hi! I am</strong> <strong>Shivani </strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>A writer driven by inquiry, observation, and the need to make sense of the world as it is and as it could be. <strong>The Urban Journal </strong>is my platform to engage with the complex intersections of politics, human psychology, and personal truth.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Through each piece, I reflect not just on external events or systems but also on the internal landscapes that shape how we think, feel and respond. The political is deeply personal and the personal often carries political weight. I write to explore those blurred lines where public narratives meet private experiences, where ideas challenge identity, and where emotion demands reflection.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>The Urban Journal</strong> is not about providing conclusions but holding space for conversation, discomfort, insight and honesty. If the questions resonate, I hope the words do too.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:uagb/advanced-heading {"block_id":"847622c9","classMigrate":true,"headingDescToggle":false} -->
+<div class="wp-block-uagb-advanced-heading uagb-block-847622c9"></div>
+<!-- /wp:uagb/advanced-heading -->
+
+<!-- wp:uagb/advanced-heading {"block_id":"b7f93ac1","classMigrate":true,"headingDescToggle":false} -->
+<div class="wp-block-uagb-advanced-heading uagb-block-b7f93ac1"></div>
+<!-- /wp:uagb/advanced-heading -->
+			</div>
+		</div><!-- #content -->
+
+		<footer id="colophon" class="site-footer clearfix">
+			<div class="content-wrap">
+				<div class="footer-column-wrapper">
+					<div class="footer-column-three footer-column-left">
+						<div class="widget widget_media_image">
+							<a href="../index.html">
+								<img src="../wp-content/uploads/2025/07/cropped-cropped-final_logo_TUJ-removebg-preview-300x300.png" alt="logo of the urban journal" width="136" height="136" class="image wp-image-2526 attachment-full size-full" style="max-width: 100%; height: auto;" />
+							</a>
+						</div>
+						<div class="widget widget_block">
+							<p><strong><a href="../index.html" style="color: inherit;">The Urban Journal</a></strong> is your space for bold perspectives on politics, deep dives into human psychology, and raw reflections on personal truth. Thought-provoking blogs that question, connect, and challenge.</p>
+						</div>
+						<div class="widget widget_block" style="margin-top: 15px;">
+							<div class="footer-social-links" style="display: flex; align-items: center; gap: 20px; margin-top: 10px;">
+								<a href="https://x.com/JournalThe40534" target="_blank" rel="noopener noreferrer" class="social-link-x" title="X (Twitter)" style="color: #bbb; padding: 6px; text-decoration: none; transition: all 0.2s ease; display: inline-block;">
+									<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="display: block;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+								</a>
+								<a href="https://www.instagram.com/theurbanjournall?igsh=MXY2ZmZiNmt2ZmNkZQ==" target="_blank" rel="noopener noreferrer" class="social-link-instagram" title="Instagram" style="color: #bbb; padding: 6px; text-decoration: none; transition: all 0.2s ease; display: inline-block;">
+									<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+								</a>
+								<a href="https://in.linkedin.com/company/the-urban-journall" target="_blank" rel="noopener noreferrer" class="social-link-linkedin" title="LinkedIn" style="color: #bbb; padding: 6px; text-decoration: none; transition: all 0.2s ease; display: inline-block;">
+									<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+								</a>
+							</div>
+						</div>
+					</div>
+					
+					<div class="footer-column-three footer-column-middle">
+						<div class="widget widget_categories">
+							<h2 class="widgettitle">Categories</h2>
+							<ul>
+								<li class="cat-item"><a href="../category/politics/index.html">Politics</a></li><li class="cat-item"><a href="../category/psychology/index.html">Psychology</a></li><li class="cat-item"><a href="../category/personal-truth/index.html">Personal truth</a></li>
+							</ul>
+						</div>
+					</div>
+					
+					<div class="footer-column-three footer-column-right">
+						<!-- Empty Column -->
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div><!-- #page -->
+</body>
+</html>

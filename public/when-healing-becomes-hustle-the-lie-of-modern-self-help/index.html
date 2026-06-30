@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>When Healing Becomes Hustle: The Lie of Modern Self-Help - The Urban Journal</title>
+	<meta name="description" content="We’ve All Been There Once     Sitting alone after a long day, scrolling past a perfectly timed quote on your feed: “Everything is temporary.” It feels...">
+	<meta name="robots" content="index, follow">
+	<link rel="canonical" href="https://the-urban-journal.com/when-healing-becomes-hustle-the-lie-of-modern-self-help/">
+	
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,400&family=DM+Serif+Display:ital@0;1&family=Roboto:ital,wght@0,300;0,400;0,700;1,400&family=DM+Serif+Text:ital@0;1&family=Roboto+Slab:wght@300;400;700&family=Roboto+Mono:ital,wght@0,300;0,400;0,700;1,400&family=Averia+Sans+Libre:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+	
+	<!-- WordPress & Theme Core Stylesheets -->
+	<link rel="stylesheet" href="../wp-includes/css/dist/block-library/style.min.css">
+	<link rel="stylesheet" href="../wp-content/plugins/ultimate-addons-for-gutenberg/dist/blocks.css">
+	<link rel="stylesheet" href="../wp-content/themes/personalblogily/style.css">
+	<link rel="stylesheet" href="../wp-content/themes/simply-personal-blog/style.css">
+	
+	<!-- Page/Post Specific Stylesheets -->
+	
+	
+	<!-- Responsive Mobile Styling & Pure CSS Mobile Menu -->
+	<style>
+		/* Floating Side Navigation on Desktop */
+		@media (min-width: 1200px) {
+			.side-nav {
+				position: fixed;
+				left: 40px;
+				top: 50%;
+				transform: translateY(-50%);
+				z-index: 999;
+				display: flex;
+				flex-direction: column;
+				gap: 18px;
+				background: #ffffff;
+				padding: 22px 16px;
+				border-radius: 6px;
+				box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+				border: 1px solid #e0e0e0;
+				transition: all 0.3s ease;
+				
+				/* Default state for older/unsupported browsers (always visible) */
+				opacity: 1;
+				visibility: visible;
+			}
+			
+			/* Dynamic scroll-driven animation for modern browsers */
+			@supports (animation-timeline: scroll()) {
+				@keyframes show-side-nav {
+					0% {
+						opacity: 0;
+						visibility: hidden;
+						transform: translateY(-50%) scale(0.95);
+					}
+					100% {
+						opacity: 1;
+						visibility: visible;
+						transform: translateY(-50%) scale(1);
+					}
+				}
+				.side-nav {
+					animation: show-side-nav linear both;
+					animation-timeline: scroll();
+					animation-range: 140px 220px; /* Appears after scrolling past the top nav (140px-220px) */
+				}
+			}
+
+			.side-nav a {
+				font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+				font-size: 12px;
+				color: #444;
+				text-decoration: none;
+				font-weight: 600;
+				text-transform: uppercase;
+				letter-spacing: 1px;
+				transition: color 0.2s ease, transform 0.2s ease;
+				display: block;
+				text-align: center;
+			}
+			.side-nav a:hover {
+				color: #000000;
+				transform: scale(1.05);
+			}
+		}
+		@media (max-width: 1199px) {
+			.side-nav {
+				display: none !important;
+			}
+		}
+
+		/* Image Consistency and Justified Text */
+		.uagb-post__image img, 
+		.uagb-post__image a img {
+			width: 100% !important;
+			height: 240px !important;
+			object-fit: cover !important;
+		}
+		.uagb-post__excerpt p, 
+		.entry-content p {
+			text-align: justify !important;
+			text-justify: inter-word;
+		}
+
+		/* Fix for post grid layout */
+		.uagb-post-grid.is-grid {
+			display: grid !important;
+			grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+			gap: 30px !important;
+		}
+		@media (max-width: 976px) {
+			.uagb-post-grid.is-grid {
+				grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+				gap: 20px !important;
+			}
+		}
+		@media (max-width: 767px) {
+			.uagb-post-grid.is-grid {
+				grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+				gap: 15px !important;
+			}
+		}
+
+		.header-social-links a:hover {
+			color: #0073aa !important;
+			transform: scale(1.1);
+		}
+		.footer-social-links a:hover {
+			color: #ffffff !important;
+			transform: scale(1.1);
+		}
+
+		@media (max-width: 767px) {
+			.main-navigation {
+				display: block !important;
+			}
+			.site-branding {
+				flex-direction: column !important;
+				text-align: center !important;
+				justify-content: center !important;
+				gap: 15px !important;
+				padding: 20px 0 !important;
+			}
+			.branding-text {
+				text-align: center !important;
+			}
+			.site-title {
+				font-size: 28px !important;
+			}
+			.site-description {
+				font-size: 13px !important;
+			}
+			.header-social-links {
+				justify-content: center !important;
+				margin-top: 5px !important;
+			}
+			
+			/* Mobile Menu Toggle */
+			.menu-toggle-label {
+				display: block !important;
+				cursor: pointer;
+				padding: 12px 0;
+				font-size: 16px;
+				font-weight: 600;
+				text-transform: uppercase;
+				border-top: 1px solid #eaeaea;
+				border-bottom: 1px solid #eaeaea;
+				background-color: #fafafa;
+				color: #333;
+				letter-spacing: 1px;
+			}
+			
+			/* Hide desktop menu on mobile by default */
+			.center-main-menu {
+				display: none;
+				width: 100%;
+			}
+			
+			/* Show menu when checkbox is checked */
+			#menu-toggle-checkbox:checked ~ .center-main-menu {
+				display: block !important;
+			}
+			
+			/* Stack mobile menu items */
+			.pmenu {
+				display: flex !important;
+				flex-direction: column !important;
+				align-items: center !important;
+				padding: 15px 0 !important;
+				float: none !important;
+				margin: 0 !important;
+			}
+			.pmenu li {
+				display: block !important;
+				margin: 8px 0 !important;
+				float: none !important;
+			}
+			.pmenu li a {
+				padding: 8px 20px !important;
+				font-size: 15px !important;
+			}
+		}
+	</style>
+</head>
+
+<body class="single-post">
+
+	<div class="side-nav">
+		<a href="../index.html">Home</a><a href="../about/index.html">About</a><a href="../https-the-urban-journal-com-latest-blogs/index.html">Blogs</a><a href="../events/index.html">Events</a>
+	</div>
+
+	<div id="page" class="site">
+
+		<header id="masthead" class="sheader site-header clearfix">
+			<div class="content-wrap">
+				<div class="site-branding" style="display: flex; align-items: center; justify-content: space-between; text-align: left; gap: 20px; width: 100%;">
+					<div style="display: flex; align-items: center; gap: 20px;">
+						<a href="../index.html" class="branding-logo-link" style="display: inline-block; flex-shrink: 0;">
+							<img src="../wp-content/uploads/2025/07/cropped-cropped-final_logo_TUJ-removebg-preview-300x300.png" alt="The Urban Journal Logo" style="width: 80px; height: 80px; max-height: 80px; object-fit: contain; display: block;" />
+						</a>
+						<div class="branding-text">
+							<p class="site-title" style="font-family: 'Times New Roman', Times, serif; font-size: 36px; margin: 0; font-weight: bold; line-height: 1.2;">
+								<a href="../index.html" rel="home" style="text-decoration: none; color: #000;">The Urban Journal</a>
+							</p>
+							<p class="site-description" style="margin: 5px 0 0 0; font-size: 15px; color: #666;">Politics, Psyche and Personal Truth</p>
+						</div>
+					</div>
+					<div class="header-social-links" style="display: flex; align-items: center; gap: 20px; flex-shrink: 0;">
+						<a href="https://x.com/JournalThe40534" target="_blank" rel="noopener noreferrer" class="social-link-x" title="X (Twitter)" style="color: #444; padding: 6px; text-decoration: none; transition: all 0.2s ease; display: inline-block;">
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="display: block;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+						</a>
+						<a href="https://www.instagram.com/theurbanjournall?igsh=MXY2ZmZiNmt2ZmNkZQ==" target="_blank" rel="noopener noreferrer" class="social-link-instagram" title="Instagram" style="color: #444; padding: 6px; text-decoration: none; transition: all 0.2s ease; display: inline-block;">
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+						</a>
+						<a href="https://in.linkedin.com/company/the-urban-journall" target="_blank" rel="noopener noreferrer" class="social-link-linkedin" title="LinkedIn" style="color: #444; padding: 6px; text-decoration: none; transition: all 0.2s ease; display: inline-block;">
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<nav id="primary-site-navigation" class="primary-menu main-navigation clearfix">
+				<div class="content-wrap text-center">
+					<input type="checkbox" id="menu-toggle-checkbox" style="display: none;">
+					<label for="menu-toggle-checkbox" class="menu-toggle-label" style="display: none;">
+						<span>☰ Menu</span>
+					</label>
+					
+					<div class="center-main-menu">
+						<ul id="primary-menu" class="pmenu">
+							<li class="menu-item "><a href="../index.html">Home</a></li><li class="menu-item "><a href="../about/index.html">About</a></li><li class="menu-item "><a href="../https-the-urban-journal-com-latest-blogs/index.html">Blogs</a></li><li class="menu-item "><a href="../events/index.html">Events</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</header>
+
+		<div id="content" class="site-content clearfix">
+			<div class="content-wrap">
+
+<div id="primary" class="featured-content content-area">
+	<main id="main" class="site-main">
+		<article id="post-2969" class="post-2969 post type-post status-publish format-standard hentry category-politics posts-entry fbox">
+			<header class="entry-header">
+				<h1 class="entry-title">When Healing Becomes Hustle: The Lie of Modern Self-Help</h1>
+				<div class="entry-meta">
+					<div class="blog-data-wrapper">
+						<div class="post-data-divider"></div>
+						<div class="post-data-positioning">
+							<div class="post-data-text">
+								<span class="posted-on">Posted on <a href="../when-healing-becomes-hustle-the-lie-of-modern-self-help/index.html" rel="bookmark"><time class="entry-date published" datetime="2025-10-12 17:30:20">October 12, 2025</time></a></span>
+								<span class="byline"> by <span class="author vcard"><a class="url fn n" href="../about/index.html">Shivani</a></span></span>
+								<span class="cat-links"> in <a href="../category/politics/index.html" rel="category tag">Politics</a></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</header>
+			
+			<div class="entry-content">
+				<!-- wp:paragraph -->
+<p>We’ve All Been There Once</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p> Sitting alone after a long day, scrolling past a perfectly timed quote on your feed: “Everything is temporary.” It feels comforting for a moment. You take a deep breath, straighten your back, and go back to your to-do list. Because that’s what we’ve been taught, to stay strong, stay functional, stay “okay.”</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>But somewhere along the way, this constant composure turned into quiet exhaustion. In a world obsessed with “moving on,” we’ve turned coping into a cultural performance.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>The Productivity of Pain</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The modern self-help movement thrives on the idea that emotional mastery is a form of discipline. We’re told to manifest peace, optimize healing, and discipline our feelings, as if our emotions were a corporate KPI.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>What began as a language of empowerment has become a subtle system of control. Every podcast, book, and reel now sells a version of strength that leaves no space for chaos. Sadness must be re-framed, grief must be useful, and pain must lead to productivity.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>>We aren’t healing; we’re simply becoming better at hiding.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Yet research suggests otherwise. Studies on emotional regulation by psychologist James Gross reveal that suppression might reduce outward expression but actually heightens physiological stress and decreases emotional authenticity. In other words, the more we perform strength, the less we feel safe.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>The Myth of Detachment</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The bestsellers of our time from The Subtle Art of Not Giving a F** to countless TED Talks promote the same message. Detachment equals maturity. But indifference isn’t peace, It’s withdrawal.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>True emotional intelligence lies not in avoiding emotion, but in staying present with it. Psychologist Daniel Goleman describes it as “the ability to recognize, understand, and manage both our own emotions and those of others.” That requires care, not distance.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Yet, in an attention economy where vulnerability looks inefficient, detachment becomes a survival skill. We are praised not for feeling deeply, but for bouncing back quickly.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>The Motivational Machinery</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Motivational culture today operates like an assembly line, mass-producing positivity. Scroll through any social media platform and you’ll see a familiar sermon: “Grind harder.” “Trust the process.” “Don’t quit.”</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The irony? Today’s motivational speakers are the orthodoxical parents of the internet, enforcing emotional obedience in newer, trendier language. Where our parents once said, “Don’t cry, be strong,” these digital mentors say, “Don’t overthink, stay positive.” The tone is softer, but the commandment is the same: suppress your chaos.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>This culture doesn’t encourage reflection; it rewards performance. As sociologist Eva Illouz writes, we are living in an age of emotional capitalism, where feelings are commodified and wellness becomes a product. The motivational industry, in this sense, sustains the very burnout it claims to cure.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>The Psychology of Real Healing</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Psychologically, healing begins where self-help ends in stillness, not strategy. Carl Rogers, one of the founding figures of humanistic psychology, wrote:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>>“The curious paradox is that when I accept myself just as I am, then I can change.”</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>This sentence dismantles the entire self-help economy in one stroke. Healing isn’t about “getting over it.” It’s about moving through it, sitting with discomfort long enough to understand what it’s teaching you. It’s about being able to say, “I’m not okay right now,” without guilt or apology.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>This process is slow, non-linear, and deeply inconvenient to a world that rewards speed. Which is exactly why it’s real.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>The Collective Illusion of Self-Work</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The modern idea of self-improvement is profoundly lonely. We are told to heal alone meditate alone, journal alone, succeed alone. But decades of psychological research show that emotional recovery is relational. Humans are wired for connection; we heal when we are seen, not when we are productive.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>>Healing was never meant to be a solo performance. It was meant to be a shared language.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The more the self-help movement glorifies “independence,” the more it erodes our collective empathy. We start seeing others’ pain as weakness instead of reflection.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>Beyond the Cult of Coping</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>We don’t need more books telling us to care less. We need spaces that allow us to care safely. The problem isn’t our desire to feel better it’s the pressure to feel better fast. Resilience has become a race, and peace has become a metric.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Real growth isn’t about indifference; it’s about discernment, learning where to place your care, not how to erase it. So yes, everything is temporary: your pain, your calm, your certainty. But that’s the beauty of being human. Healing isn’t about staying unbothered; it’s about staying honest.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Because feeling fully, consciously, courageously is the most radical act left in a world obsessed with coping.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph -->
+				
+			</div>
+		</article>
+		
+		
+    <div class="comment-respond fbox" style="margin-top: 30px; padding: 25px; background: #fff; border-radius: 4px; border: 1px solid #eee;">
+        <h3 class="comment-reply-title" style="font-family: 'Times New Roman', Times, serif; font-weight: bold; margin-bottom: 20px; border-bottom: 2px solid #333; padding-bottom: 10px;">Leave a Comment</h3>
+        <form id="commentform" style="display: flex; flex-direction: column; gap: 15px;">
+            <input type="hidden" name="post_id" value="2969">
+            <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 250px;">
+                    <label style="display: block; font-weight: 600; margin-bottom: 5px; font-size: 14px;">Name *</label>
+                    <input type="text" name="author" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 15px;">
+                </div>
+                <div style="flex: 1; min-width: 250px;">
+                    <label style="display: block; font-weight: 600; margin-bottom: 5px; font-size: 14px;">Email (will be verified) *</label>
+                    <input type="email" name="email" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 15px;">
+                </div>
+            </div>
+            <div>
+                <label style="display: block; font-weight: 600; margin-bottom: 5px; font-size: 14px;">Comment *</label>
+                <textarea name="comment" required rows="6" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 15px; resize: vertical;"></textarea>
+            </div>
+            <div id="comment-message" style="display: none; padding: 12px; border-radius: 4px; font-size: 15px; font-weight: 500;"></div>
+            <div>
+                <button type="submit" style="background: #111; color: #fff; border: none; padding: 12px 24px; font-size: 15px; font-weight: bold; border-radius: 4px; cursor: pointer; transition: background 0.2s ease;">Submit Comment</button>
+            </div>
+        </form>
+        <script>
+            document.getElementById('commentform').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const form = e.target;
+                const button = form.querySelector('button[type="submit"]');
+                const msgDiv = document.getElementById('comment-message');
+                
+                button.disabled = true;
+                button.textContent = 'Sending verification...';
+                msgDiv.style.display = 'none';
+                
+                const data = {
+                    post_id: form.post_id.value,
+                    author: form.author.value,
+                    email: form.email.value,
+                    comment: form.comment.value
+                };
+                
+                fetch('/api/submit_comment', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                })
+                .then(res => res.json())
+                .then(res => {
+                    if (res.success) {
+                        msgDiv.style.backgroundColor = '#d4edda';
+                        msgDiv.style.color = '#155724';
+                        msgDiv.style.border = '1px solid #c3e6cb';
+                        msgDiv.textContent = 'A verification email has been sent. Please check your inbox and click the link to verify your comment.';
+                        msgDiv.style.display = 'block';
+                        form.reset();
+                    } else {
+                        throw new Error(res.message || 'Failed to submit comment.');
+                    }
+                })
+                .catch(err => {
+                    msgDiv.style.backgroundColor = '#f8d7da';
+                    msgDiv.style.color = '#721c24';
+                    msgDiv.style.border = '1px solid #f5c6cb';
+                    msgDiv.textContent = err.message;
+                    msgDiv.style.display = 'block';
+                })
+                .finally(() => {
+                    button.disabled = false;
+                    button.textContent = 'Submit Comment';
+                });
+            });
+        </script>
+    </div>
+    
+	</main>
+</div>
+
+<aside id="secondary" class="featured-sidebar widget-area">
+	<div class="widget widget_search">
+		<form role="search" method="get" class="search-form" action="#">
+			<label>
+				<span class="screen-reader-text">Search for:</span>
+				<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s" />
+			</label>
+			<input type="submit" class="search-submit" value="Search" />
+		</form>
+	</div>
+	
+	<div class="widget widget_recent_entries">
+		<h2 class="widgettitle">Recent Posts</h2>
+		<ul>
+			<li><a href="../your-exhaustion-has-a-business-model/index.html">Your Exhaustion Has a Business Model</a></li><li><a href="../when-air-becomes-a-crisis-living-through-delhis-pollution-pandemic/index.html">When Air Becomes a Crisis: Living Through Delhi's Pollution Pandemic</a></li><li><a href="../when-healing-becomes-hustle-the-lie-of-modern-self-help/index.html">When Healing Becomes Hustle: The Lie of Modern Self-Help</a></li><li><a href="../the-city-that-failed-geography-gurugram/index.html">The City That Failed Geography: Gurugram</a></li><li><a href="../nostalgias-gentle-lie-why-yesterday-seems-better/index.html">Nostalgia's Gentle Lie: Why Yesterday Seems Better</a></li>
+		</ul>
+	</div>
+
+	<div class="widget widget_recent_comments">
+		<h2 class="widgettitle">Recent Comments</h2>
+		<ul id="recentcomments">
+			<li>No comments yet</li>
+		</ul>
+	</div>
+
+	<div class="widget widget_archive">
+		<h2 class="widgettitle">Archives</h2>
+		<ul>
+			<li><a href="../date/2026/03/index.html">March 2026</a></li><li><a href="../date/2025/11/index.html">November 2025</a></li><li><a href="../date/2025/10/index.html">October 2025</a></li><li><a href="../date/2025/09/index.html">September 2025</a></li><li><a href="../date/2025/08/index.html">August 2025</a></li><li><a href="../date/2025/07/index.html">July 2025</a></li><li><a href="../date/2025/06/index.html">June 2025</a></li>
+		</ul>
+	</div>
+
+	<div class="widget widget_categories">
+		<h2 class="widgettitle">Categories</h2>
+		<ul>
+			<li class="cat-item"><a href="../category/politics/index.html">Politics</a></li><li class="cat-item"><a href="../category/psychology/index.html">Psychology</a></li><li class="cat-item"><a href="../category/personal-truth/index.html">Personal truth</a></li>
+		</ul>
+	</div>
+</aside>
+
+			</div>
+		</div><!-- #content -->
+
+		<footer id="colophon" class="site-footer clearfix">
+			<div class="content-wrap">
+				<div class="footer-column-wrapper">
+					<div class="footer-column-three footer-column-left">
+						<div class="widget widget_media_image">
+							<a href="../index.html">
+								<img src="../wp-content/uploads/2025/07/cropped-cropped-final_logo_TUJ-removebg-preview-300x300.png" alt="logo of the urban journal" width="136" height="136" class="image wp-image-2526 attachment-full size-full" style="max-width: 100%; height: auto;" />
+							</a>
+						</div>
+						<div class="widget widget_block">
+							<p><strong><a href="../index.html" style="color: inherit;">The Urban Journal</a></strong> is your space for bold perspectives on politics, deep dives into human psychology, and raw reflections on personal truth. Thought-provoking blogs that question, connect, and challenge.</p>
+						</div>
+						<div class="widget widget_block" style="margin-top: 15px;">
+							<div class="footer-social-links" style="display: flex; align-items: center; gap: 20px; margin-top: 10px;">
+								<a href="https://x.com/JournalThe40534" target="_blank" rel="noopener noreferrer" class="social-link-x" title="X (Twitter)" style="color: #bbb; padding: 6px; text-decoration: none; transition: all 0.2s ease; display: inline-block;">
+									<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="display: block;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+								</a>
+								<a href="https://www.instagram.com/theurbanjournall?igsh=MXY2ZmZiNmt2ZmNkZQ==" target="_blank" rel="noopener noreferrer" class="social-link-instagram" title="Instagram" style="color: #bbb; padding: 6px; text-decoration: none; transition: all 0.2s ease; display: inline-block;">
+									<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+								</a>
+								<a href="https://in.linkedin.com/company/the-urban-journall" target="_blank" rel="noopener noreferrer" class="social-link-linkedin" title="LinkedIn" style="color: #bbb; padding: 6px; text-decoration: none; transition: all 0.2s ease; display: inline-block;">
+									<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+								</a>
+							</div>
+						</div>
+					</div>
+					
+					<div class="footer-column-three footer-column-middle">
+						<div class="widget widget_categories">
+							<h2 class="widgettitle">Categories</h2>
+							<ul>
+								<li class="cat-item"><a href="../category/politics/index.html">Politics</a></li><li class="cat-item"><a href="../category/psychology/index.html">Psychology</a></li><li class="cat-item"><a href="../category/personal-truth/index.html">Personal truth</a></li>
+							</ul>
+						</div>
+					</div>
+					
+					<div class="footer-column-three footer-column-right">
+						<!-- Empty Column -->
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div><!-- #page -->
+</body>
+</html>

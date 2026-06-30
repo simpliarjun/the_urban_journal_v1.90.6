@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Home - The Urban Journal</title>
+	<meta name="robots" content="index, follow">
+	<link rel="canonical" href="https://the-urban-journal.com/">
+	
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,400&family=DM+Serif+Display:ital@0;1&family=Roboto:ital,wght@0,300;0,400;0,700;1,400&family=DM+Serif+Text:ital@0;1&family=Roboto+Slab:wght@300;400;700&family=Roboto+Mono:ital,wght@0,300;0,400;0,700;1,400&family=Averia+Sans+Libre:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+	
+	<!-- WordPress & Theme Core Stylesheets -->
+	<link rel="stylesheet" href="wp-includes/css/dist/block-library/style.min.css">
+	<link rel="stylesheet" href="wp-content/plugins/ultimate-addons-for-gutenberg/dist/blocks.css">
+	<link rel="stylesheet" href="wp-content/themes/personalblogily/style.css">
+	<link rel="stylesheet" href="wp-content/themes/simply-personal-blog/style.css">
+	
+	<!-- Page/Post Specific Stylesheets -->
+	
+	
+	<!-- Responsive Mobile Styling & Pure CSS Mobile Menu -->
+	<style>
+		/* Floating Side Navigation on Desktop */
+		@media (min-width: 1200px) {
+			.side-nav {
+				position: fixed;
+				left: 40px;
+				top: 50%;
+				transform: translateY(-50%);
+				z-index: 999;
+				display: flex;
+				flex-direction: column;
+				gap: 18px;
+				background: #ffffff;
+				padding: 22px 16px;
+				border-radius: 6px;
+				box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+				border: 1px solid #e0e0e0;
+				transition: all 0.3s ease;
+				
+				/* Default state for older/unsupported browsers (always visible) */
+				opacity: 1;
+				visibility: visible;
+			}
+			
+			/* Dynamic scroll-driven animation for modern browsers */
+			@supports (animation-timeline: scroll()) {
+				@keyframes show-side-nav {
+					0% {
+						opacity: 0;
+						visibility: hidden;
+						transform: translateY(-50%) scale(0.95);
+					}
+					100% {
+						opacity: 1;
+						visibility: visible;
+						transform: translateY(-50%) scale(1);
+					}
+				}
+				.side-nav {
+					animation: show-side-nav linear both;
+					animation-timeline: scroll();
+					animation-range: 140px 220px; /* Appears after scrolling past the top nav (140px-220px) */
+				}
+			}
+
+			.side-nav a {
+				font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+				font-size: 12px;
+				color: #444;
+				text-decoration: none;
+				font-weight: 600;
+				text-transform: uppercase;
+				letter-spacing: 1px;
+				transition: color 0.2s ease, transform 0.2s ease;
+				display: block;
+				text-align: center;
+			}
+			.side-nav a:hover {
+				color: #000000;
+				transform: scale(1.05);
+			}
+		}
+		@media (max-width: 1199px) {
+			.side-nav {
+				display: none !important;
+			}
+		}
+
+		/* Image Consistency and Justified Text */
+		.uagb-post__image img, 
+		.uagb-post__image a img {
+			width: 100% !important;
+			height: 240px !important;
+			object-fit: cover !important;
+		}
+		.uagb-post__excerpt p, 
+		.entry-content p {
+			text-align: justify !important;
+			text-justify: inter-word;
+		}
+
+		/* Fix for post grid layout */
+		.uagb-post-grid.is-grid {
+			display: grid !important;
+			grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+			gap: 30px !important;
+		}
+		@media (max-width: 976px) {
+			.uagb-post-grid.is-grid {
+				grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+				gap: 20px !important;
+			}
+		}
+		@media (max-width: 767px) {
+			.uagb-post-grid.is-grid {
+				grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+				gap: 15px !important;
+			}
+		}
+
+		.header-social-links a:hover {
+			color: #0073aa !important;
+			transform: scale(1.1);
+		}
+		.footer-social-links a:hover {
+			color: #ffffff !important;
+			transform: scale(1.1);
+		}
+
+		@media (max-width: 767px) {
+			.main-navigation {
+				display: block !important;
+			}
+			.site-branding {
+				flex-direction: column !important;
+				text-align: center !important;
+				justify-content: center !important;
+				gap: 15px !important;
+				padding: 20px 0 !important;
+			}
+			.branding-text {
+				text-align: center !important;
+			}
+			.site-title {
+				font-size: 28px !important;
+			}
+			.site-description {
+				font-size: 13px !important;
+			}
+			.header-social-links {
+				justify-content: center !important;
+				margin-top: 5px !important;
+			}
+			
+			/* Mobile Menu Toggle */
+			.menu-toggle-label {
+				display: block !important;
+				cursor: pointer;
+				padding: 12px 0;
+				font-size: 16px;
+				font-weight: 600;
+				text-transform: uppercase;
+				border-top: 1px solid #eaeaea;
+				border-bottom: 1px solid #eaeaea;
+				background-color: #fafafa;
+				color: #333;
+				letter-spacing: 1px;
+			}
+			
+			/* Hide desktop menu on mobile by default */
+			.center-main-menu {
+				display: none;
+				width: 100%;
+			}
+			
+			/* Show menu when checkbox is checked */
+			#menu-toggle-checkbox:checked ~ .center-main-menu {
+				display: block !important;
+			}
+			
+			/* Stack mobile menu items */
+			.pmenu {
+				display: flex !important;
+				flex-direction: column !important;
+				align-items: center !important;
+				padding: 15px 0 !important;
+				float: none !important;
+				margin: 0 !important;
+			}
+			.pmenu li {
+				display: block !important;
+				margin: 8px 0 !important;
+				float: none !important;
+			}
+			.pmenu li a {
+				padding: 8px 20px !important;
+				font-size: 15px !important;
+			}
+		}
+	</style>
+</head>
+
+<body class="page-template-default page">
+
+	<div class="side-nav">
+		<a href="index.html">Home</a><a href="about/index.html">About</a><a href="https-the-urban-journal-com-latest-blogs/index.html">Blogs</a><a href="events/index.html">Events</a>
+	</div>
+
+	<div id="page" class="site">
+
+		<header id="masthead" class="sheader site-header clearfix">
+			<div class="content-wrap">
+				<div class="site-branding" style="display: flex; align-items: center; justify-content: space-between; text-align: left; gap: 20px; width: 100%;">
+					<div style="display: flex; align-items: center; gap: 20px;">
+						<a href="index.html" class="branding-logo-link" style="display: inline-block; flex-shrink: 0;">
+							<img src="wp-content/uploads/2025/07/cropped-cropped-final_logo_TUJ-removebg-preview-300x300.png" alt="The Urban Journal Logo" style="width: 80px; height: 80px; max-height: 80px; object-fit: contain; display: block;" />
+						</a>
+						<div class="branding-text">
+							<p class="site-title" style="font-family: 'Times New Roman', Times, serif; font-size: 36px; margin: 0; font-weight: bold; line-height: 1.2;">
+								<a href="index.html" rel="home" style="text-decoration: none; color: #000;">The Urban Journal</a>
+							</p>
+							<p class="site-description" style="margin: 5px 0 0 0; font-size: 15px; color: #666;">Politics, Psyche and Personal Truth</p>
+						</div>
+					</div>
+					<div class="header-social-links" style="display: flex; align-items: center; gap: 20px; flex-shrink: 0;">
+						<a href="https://x.com/JournalThe40534" target="_blank" rel="noopener noreferrer" class="social-link-x" title="X (Twitter)" style="color: #444; padding: 6px; text-decoration: none; transition: all 0.2s ease; display: inline-block;">
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="display: block;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+						</a>
+						<a href="https://www.instagram.com/theurbanjournall?igsh=MXY2ZmZiNmt2ZmNkZQ==" target="_blank" rel="noopener noreferrer" class="social-link-instagram" title="Instagram" style="color: #444; padding: 6px; text-decoration: none; transition: all 0.2s ease; display: inline-block;">
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+						</a>
+						<a href="https://in.linkedin.com/company/the-urban-journall" target="_blank" rel="noopener noreferrer" class="social-link-linkedin" title="LinkedIn" style="color: #444; padding: 6px; text-decoration: none; transition: all 0.2s ease; display: inline-block;">
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<nav id="primary-site-navigation" class="primary-menu main-navigation clearfix">
+				<div class="content-wrap text-center">
+					<input type="checkbox" id="menu-toggle-checkbox" style="display: none;">
+					<label for="menu-toggle-checkbox" class="menu-toggle-label" style="display: none;">
+						<span>☰ Menu</span>
+					</label>
+					
+					<div class="center-main-menu">
+						<ul id="primary-menu" class="pmenu">
+							<li class="menu-item current-menu-item"><a href="index.html">Home</a></li><li class="menu-item "><a href="about/index.html">About</a></li><li class="menu-item "><a href="https-the-urban-journal-com-latest-blogs/index.html">Blogs</a></li><li class="menu-item "><a href="events/index.html">Events</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</header>
+
+		<div id="content" class="site-content clearfix">
+			<div class="content-wrap">
+<!-- wp:uagb/container {"block_id":"6c959d0c","alignItemsDesktop":"flex-start","backgroundType":"image","backgroundImageDesktop":{"uploading":false,"date":1757262523000,"filename":"telephone.jpg","menuOrder":0,"uploadedTo":1718,"type":"image","subtype":"jpeg","id":2777,"title":"telephone","url":"/wp-content/uploads/2025/09/telephone.jpg","link":"/https-the-urban-journal-com/telephone/","alt":"Image of a telephone booth","author":"1","description":"","caption":"","name":"telephone","status":"inherit","modified":1757262523000,"mime":"image/jpeg","icon":"/wp-includes/images/media/default.svg","dateFormatted":"September 7, 2025","nonces":{"update":"89b5af7681","delete":"93ea16bb4d","edit":"8f87287f1c"},"editLink":"/wp-admin/post.php?post=2777\u0026action=edit","meta":false,"authorName":"shivanip1906@gmail.com","authorLink":"/wp-admin/profile.php","uploadedToTitle":"Home","uploadedToLink":"/wp-admin/post.php?post=1718\u0026action=edit","filesizeInBytes":29855,"filesizeHumanReadable":"29 KB","context":"","height":483,"width":570,"orientation":"landscape","sizes":{"thumbnail":{"height":150,"width":150,"url":"/wp-content/uploads/2025/09/telephone-150x150.jpg","orientation":"landscape"},"medium":{"height":254,"width":300,"url":"/wp-content/uploads/2025/09/telephone-300x254.jpg","orientation":"landscape"},"full":{"url":"/wp-content/uploads/2025/09/telephone.jpg","height":483,"width":570,"orientation":"landscape"}},"compat":{"item":"","meta":""}},"topPaddingDesktop":-50,"bottomPaddingDesktop":134,"leftPaddingDesktop":40,"rightPaddingDesktop":40,"topPaddingTablet":120,"bottomPaddingTablet":120,"leftPaddingTablet":40,"rightPaddingTablet":40,"topPaddingMobile":120,"bottomPaddingMobile":120,"leftPaddingMobile":30,"rightPaddingMobile":30,"paddingLink":false,"topMarginDesktop":0,"bottomMarginDesktop":0,"leftMarginDesktop":0,"rightMarginDesktop":0,"topMarginTablet":0,"bottomMarginTablet":0,"leftMarginTablet":0,"rightMarginTablet":0,"topMarginMobile":0,"bottomMarginMobile":0,"leftMarginMobile":0,"rightMarginMobile":0,"variationSelected":true,"rowGapTablet":0,"rowGapMobile":0,"columnGapTablet":0,"columnGapMobile":0,"isBlockRootParent":true} -->
+<div class="wp-block-uagb-container uagb-block-6c959d0c alignfull uagb-is-root-container"><div class="uagb-container-inner-blocks-wrap"><!-- wp:uagb/container {"block_id":"b8120650","widthDesktop":84,"widthTablet":65,"minHeightDesktop":193,"topPaddingTablet":0,"bottomPaddingTablet":0,"leftPaddingTablet":0,"rightPaddingTablet":0,"topMarginTablet":0,"bottomMarginTablet":0,"leftMarginTablet":0,"rightMarginTablet":0,"variationSelected":true,"widthSetByUser":true} -->
+<div class="wp-block-uagb-container uagb-block-b8120650"><!-- wp:uagb/info-box {"classMigrate":true,"headingAlign":"left","headingColor":"#ffffff","subHeadingColor":"var(\u002d\u002dast-global-color-4)","prefixColor":"#ffffff","prefixFontStyle":"italic","prefixHeadingTag":"h4","headingTag":"h1","subHeadSpace":40,"block_id":"c9855d8e","iconImage":{"url":"","alt":"InfoBox placeholder img"},"showPrefix":true,"showIcon":false,"prefixTopMargin":0,"prefixRightMargin":0,"prefixLeftMargin":0,"prefixMarginTopTablet":0,"prefixMarginRightTablet":0,"prefixTabletSpace":10,"prefixMarginLeftTablet":0,"prefixMarginTopMobile":0,"prefixMarginRightMobile":0,"prefixMobileSpace":10,"prefixMarginLeftMobile":0,"headTopMargin":0,"headRightMargin":0,"headLeftMargin":0,"headMarginTopTablet":0,"headMarginRightTablet":0,"headTabletSpace":10,"headMarginLeftTablet":0,"headMarginTopMobile":0,"headMarginRightMobile":0,"headMobileSpace":15,"headMarginLeftMobile":0,"blockTopPadding":0,"blockRightPadding":0,"blockLeftPadding":0,"blockBottomPadding":0,"blockTopPaddingTablet":0,"blockRightPaddingTablet":0,"blockLeftPaddingTablet":0,"blockBottomPaddingTablet":0,"blockTopPaddingMobile":0,"blockRightPaddingMobile":0,"blockLeftPaddingMobile":0,"blockBottomPaddingMobile":0,"blockTopMargin":0,"blockRightMargin":0,"blockLeftMargin":0,"blockBottomMargin":0,"blockTopMarginTablet":0,"blockRightMarginTablet":0,"blockLeftMarginTablet":0,"blockBottomMarginTablet":0,"blockTopMarginMobile":0,"blockRightMarginMobile":0,"blockLeftMarginMobile":0,"blockBottomMarginMobile":0,"subHeadTopMargin":0,"subHeadRightMargin":0,"subHeadLeftMargin":0,"subHeadMarginTopTablet":0,"subHeadMarginRightTablet":0,"subHeadTabletSpace":25,"subHeadMarginLeftTablet":0,"subHeadMarginTopMobile":0,"subHeadMarginRightMobile":0,"subHeadMobileSpace":25,"subHeadMarginLeftMobile":0,"btnBorderTopWidth":1,"btnBorderLeftWidth":1,"btnBorderRightWidth":1,"btnBorderBottomWidth":1,"btnBorderTopLeftRadius":0,"btnBorderTopRightRadius":0,"btnBorderBottomLeftRadius":0,"btnBorderBottomRightRadius":0,"btnBorderStyle":"solid","btnBorderColor":"#333"} -->
+<div class="uagb-block-c9855d8e uagb-infobox__content-wrap  uagb-infobox-icon-above-title uagb-infobox-image-valign-top  wp-block-uagb-info-box--has-margin"><div class="uagb-infobox-margin-wrapper"><div class="uagb-ifb-content"><div class="uagb-ifb-title-wrap"><h1 class="uagb-ifb-title"><br><br>Decoding the world we live in</h1></div></div></div></div>
+<!-- /wp:uagb/info-box --></div>
+<!-- /wp:uagb/container --></div></div>
+<!-- /wp:uagb/container -->
+
+<!-- wp:uagb/container {"block_id":"3c2b710f","topPaddingDesktop":100,"bottomPaddingDesktop":100,"topPaddingTablet":50,"bottomPaddingTablet":50,"leftPaddingTablet":40,"rightPaddingTablet":40,"topPaddingMobile":50,"bottomPaddingMobile":50,"leftPaddingMobile":30,"rightPaddingMobile":30,"paddingLink":false,"topMarginDesktop":0,"bottomMarginDesktop":0,"leftMarginDesktop":0,"rightMarginDesktop":0,"topMarginTablet":0,"bottomMarginTablet":0,"leftMarginTablet":0,"rightMarginTablet":0,"topMarginMobile":0,"bottomMarginMobile":0,"leftMarginMobile":0,"rightMarginMobile":0,"variationSelected":true,"rowGapTablet":0,"rowGapMobile":0,"columnGapTablet":0,"columnGapMobile":0,"isBlockRootParent":true} -->
+<div class="wp-block-uagb-container uagb-block-3c2b710f alignfull uagb-is-root-container"><div class="uagb-container-inner-blocks-wrap"><!-- wp:uagb/advanced-heading {"block_id":"48c2f920","classMigrate":true,"headingDescToggle":true,"headingAlign":"center","subHeadingColor":"","headSpace":20,"subHeadSpace":50,"blockTopPadding":0,"blockRightPadding":0,"blockLeftPadding":0,"blockBottomPadding":0,"blockTopMargin":0,"blockRightMargin":0,"blockLeftMargin":0,"blockBottomMargin":0} -->
+<div class="wp-block-uagb-advanced-heading uagb-block-48c2f920"><h2 class="uagb-heading-text">New on The Urban Journal</h2><p class="uagb-desc-text">Think of this as a corner for thoughtful reads on politics, psychology and creativity. </p></div>
+<!-- /wp:uagb/advanced-heading -->
+
+<div class="uagb-post-grid uagb-post__items uagb-post__columns-3 is-grid uagb-post__image-position-top">
+        <article class="post-3003 post type-post status-publish format-standard hentry">
+            <div class="uagb-post__inner-wrap">
+                
+            <div class="uagb-post__image">
+                <a href="your-exhaustion-has-a-business-model/index.html" class="uagb-image-ratio-2-3">
+                    <img src="wp-content/uploads/2026/03/WhatsApp-Image-2026-03-20-at-9.56.39-PM.jpeg" alt="Your Exhaustion Has a Business Model" loading="lazy" />
+                </a>
+            </div>
+            
+                <div class="uagb-post__text">
+                    <h3 class="uagb-post__title">
+                        <a href="your-exhaustion-has-a-business-model/index.html">Your Exhaustion Has a Business Model</a>
+                    </h3>
+                    <div class="uagb-post-grid-byline">
+                        <span class="uagb-post__author">by <a href="about/index.html">Shivani</a></span>
+                        <span class="uagb-post__date">· March 20, 2026</span>
+                    </div>
+                    <div class="uagb-post__excerpt">
+                        <p><!-- wp:paragraph -->
+There is something quietly unsettling about losing the ability to read.
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+Not books. Just articles. Twel...</p>
+                    </div>
+                    <div class="uagb-post__cta">
+                        <a class="uagb-post__cta-link" href="your-exhaustion-has-a-business-model/index.html">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+        
+        <article class="post-2980 post type-post status-publish format-standard hentry">
+            <div class="uagb-post__inner-wrap">
+                
+            <div class="uagb-post__image">
+                <a href="when-air-becomes-a-crisis-living-through-delhis-pollution-pandemic/index.html" class="uagb-image-ratio-2-3">
+                    <img src="wp-content/uploads/2025/11/WhatsApp-Image-2025-11-25-at-1.15.18-PM.jpeg" alt="When Air Becomes a Crisis: Living Through Delhi's Pollution Pandemic" loading="lazy" />
+                </a>
+            </div>
+            
+                <div class="uagb-post__text">
+                    <h3 class="uagb-post__title">
+                        <a href="when-air-becomes-a-crisis-living-through-delhis-pollution-pandemic/index.html">When Air Becomes a Crisis: Living Through Delhi's Pollution Pandemic</a>
+                    </h3>
+                    <div class="uagb-post-grid-byline">
+                        <span class="uagb-post__author">by <a href="about/index.html">Shivani</a></span>
+                        <span class="uagb-post__date">· November 25, 2025</span>
+                    </div>
+                    <div class="uagb-post__excerpt">
+                        <p><!-- wp:paragraph -->
+My eyes are burning as I write this, not from tears, not from screen glare, from the air I have no choice but to breathe. My throat, once used to deliverin...</p>
+                    </div>
+                    <div class="uagb-post__cta">
+                        <a class="uagb-post__cta-link" href="when-air-becomes-a-crisis-living-through-delhis-pollution-pandemic/index.html">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+        
+        <article class="post-2969 post type-post status-publish format-standard hentry">
+            <div class="uagb-post__inner-wrap">
+                
+            <div class="uagb-post__image">
+                <a href="when-healing-becomes-hustle-the-lie-of-modern-self-help/index.html" class="uagb-image-ratio-2-3">
+                    <img src="wp-content/uploads/2025/10/WhatsApp-Image-2025-10-12-at-10.58.10-PM-e1764837758824.jpeg" alt="When Healing Becomes Hustle: The Lie of Modern Self-Help" loading="lazy" />
+                </a>
+            </div>
+            
+                <div class="uagb-post__text">
+                    <h3 class="uagb-post__title">
+                        <a href="when-healing-becomes-hustle-the-lie-of-modern-self-help/index.html">When Healing Becomes Hustle: The Lie of Modern Self-Help</a>
+                    </h3>
+                    <div class="uagb-post-grid-byline">
+                        <span class="uagb-post__author">by <a href="about/index.html">Shivani</a></span>
+                        <span class="uagb-post__date">· October 12, 2025</span>
+                    </div>
+                    <div class="uagb-post__excerpt">
+                        <p><!-- wp:paragraph -->
+We’ve All Been There Once
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+ Sitting alone after a long day, scrolling past a perfectly timed quote on y...</p>
+                    </div>
+                    <div class="uagb-post__cta">
+                        <a class="uagb-post__cta-link" href="when-healing-becomes-hustle-the-lie-of-modern-self-help/index.html">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+        </div></div></div>
+<!-- /wp:uagb/container -->
+
+<!-- wp:paragraph {"align":"center","style":{"elements":{"link":{"color":{"text":"var:preset|color|ast-global-color-1"}}}},"fontSize":"medium"} -->
+<p class="has-text-align-center has-link-color has-medium-font-size">Discover more thought-provoking reads in our<a href="https-the-urban-journal-com-latest-blogs/index.html"> blog library</a></p>
+<!-- /wp:paragraph -->
+			</div>
+		</div><!-- #content -->
+
+		<footer id="colophon" class="site-footer clearfix">
+			<div class="content-wrap">
+				<div class="footer-column-wrapper">
+					<div class="footer-column-three footer-column-left">
+						<div class="widget widget_media_image">
+							<a href="index.html">
+								<img src="wp-content/uploads/2025/07/cropped-cropped-final_logo_TUJ-removebg-preview-300x300.png" alt="logo of the urban journal" width="136" height="136" class="image wp-image-2526 attachment-full size-full" style="max-width: 100%; height: auto;" />
+							</a>
+						</div>
+						<div class="widget widget_block">
+							<p><strong><a href="index.html" style="color: inherit;">The Urban Journal</a></strong> is your space for bold perspectives on politics, deep dives into human psychology, and raw reflections on personal truth. Thought-provoking blogs that question, connect, and challenge.</p>
+						</div>
+						<div class="widget widget_block" style="margin-top: 15px;">
+							<div class="footer-social-links" style="display: flex; align-items: center; gap: 20px; margin-top: 10px;">
+								<a href="https://x.com/JournalThe40534" target="_blank" rel="noopener noreferrer" class="social-link-x" title="X (Twitter)" style="color: #bbb; padding: 6px; text-decoration: none; transition: all 0.2s ease; display: inline-block;">
+									<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="display: block;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+								</a>
+								<a href="https://www.instagram.com/theurbanjournall?igsh=MXY2ZmZiNmt2ZmNkZQ==" target="_blank" rel="noopener noreferrer" class="social-link-instagram" title="Instagram" style="color: #bbb; padding: 6px; text-decoration: none; transition: all 0.2s ease; display: inline-block;">
+									<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+								</a>
+								<a href="https://in.linkedin.com/company/the-urban-journall" target="_blank" rel="noopener noreferrer" class="social-link-linkedin" title="LinkedIn" style="color: #bbb; padding: 6px; text-decoration: none; transition: all 0.2s ease; display: inline-block;">
+									<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+								</a>
+							</div>
+						</div>
+					</div>
+					
+					<div class="footer-column-three footer-column-middle">
+						<div class="widget widget_categories">
+							<h2 class="widgettitle">Categories</h2>
+							<ul>
+								<li class="cat-item"><a href="category/politics/index.html">Politics</a></li><li class="cat-item"><a href="category/psychology/index.html">Psychology</a></li><li class="cat-item"><a href="category/personal-truth/index.html">Personal truth</a></li>
+							</ul>
+						</div>
+					</div>
+					
+					<div class="footer-column-three footer-column-right">
+						<!-- Empty Column -->
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div><!-- #page -->
+</body>
+</html>

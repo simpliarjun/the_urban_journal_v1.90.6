@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Nostalgia's Gentle Lie: Why Yesterday Seems Better - The Urban Journal</title>
+	<meta name="description" content="On calm Sunday evenings &quot;the good old days&quot; don’t knock softly, they barge in. A song from the early 2000s plays on the radio, a reel scrolls across y...">
+	<meta name="robots" content="index, follow">
+	<link rel="canonical" href="https://the-urban-journal.com/nostalgias-gentle-lie-why-yesterday-seems-better/">
+	
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,400&family=DM+Serif+Display:ital@0;1&family=Roboto:ital,wght@0,300;0,400;0,700;1,400&family=DM+Serif+Text:ital@0;1&family=Roboto+Slab:wght@300;400;700&family=Roboto+Mono:ital,wght@0,300;0,400;0,700;1,400&family=Averia+Sans+Libre:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+	
+	<!-- WordPress & Theme Core Stylesheets -->
+	<link rel="stylesheet" href="../wp-includes/css/dist/block-library/style.min.css">
+	<link rel="stylesheet" href="../wp-content/plugins/ultimate-addons-for-gutenberg/dist/blocks.css">
+	<link rel="stylesheet" href="../wp-content/themes/personalblogily/style.css">
+	<link rel="stylesheet" href="../wp-content/themes/simply-personal-blog/style.css">
+	
+	<!-- Page/Post Specific Stylesheets -->
+	
+	
+	<!-- Responsive Mobile Styling & Pure CSS Mobile Menu -->
+	<style>
+		/* Floating Side Navigation on Desktop */
+		@media (min-width: 1200px) {
+			.side-nav {
+				position: fixed;
+				left: 40px;
+				top: 50%;
+				transform: translateY(-50%);
+				z-index: 999;
+				display: flex;
+				flex-direction: column;
+				gap: 18px;
+				background: #ffffff;
+				padding: 22px 16px;
+				border-radius: 6px;
+				box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+				border: 1px solid #e0e0e0;
+				transition: all 0.3s ease;
+				
+				/* Default state for older/unsupported browsers (always visible) */
+				opacity: 1;
+				visibility: visible;
+			}
+			
+			/* Dynamic scroll-driven animation for modern browsers */
+			@supports (animation-timeline: scroll()) {
+				@keyframes show-side-nav {
+					0% {
+						opacity: 0;
+						visibility: hidden;
+						transform: translateY(-50%) scale(0.95);
+					}
+					100% {
+						opacity: 1;
+						visibility: visible;
+						transform: translateY(-50%) scale(1);
+					}
+				}
+				.side-nav {
+					animation: show-side-nav linear both;
+					animation-timeline: scroll();
+					animation-range: 140px 220px; /* Appears after scrolling past the top nav (140px-220px) */
+				}
+			}
+
+			.side-nav a {
+				font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+				font-size: 12px;
+				color: #444;
+				text-decoration: none;
+				font-weight: 600;
+				text-transform: uppercase;
+				letter-spacing: 1px;
+				transition: color 0.2s ease, transform 0.2s ease;
+				display: block;
+				text-align: center;
+			}
+			.side-nav a:hover {
+				color: #000000;
+				transform: scale(1.05);
+			}
+		}
+		@media (max-width: 1199px) {
+			.side-nav {
+				display: none !important;
+			}
+		}
+
+		/* Image Consistency and Justified Text */
+		.uagb-post__image img, 
+		.uagb-post__image a img {
+			width: 100% !important;
+			height: 240px !important;
+			object-fit: cover !important;
+		}
+		.uagb-post__excerpt p, 
+		.entry-content p {
+			text-align: justify !important;
+			text-justify: inter-word;
+		}
+
+		/* Fix for post grid layout */
+		.uagb-post-grid.is-grid {
+			display: grid !important;
+			grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+			gap: 30px !important;
+		}
+		@media (max-width: 976px) {
+			.uagb-post-grid.is-grid {
+				grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+				gap: 20px !important;
+			}
+		}
+		@media (max-width: 767px) {
+			.uagb-post-grid.is-grid {
+				grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+				gap: 15px !important;
+			}
+		}
+
+		.header-social-links a:hover {
+			color: #0073aa !important;
+			transform: scale(1.1);
+		}
+		.footer-social-links a:hover {
+			color: #ffffff !important;
+			transform: scale(1.1);
+		}
+
+		@media (max-width: 767px) {
+			.main-navigation {
+				display: block !important;
+			}
+			.site-branding {
+				flex-direction: column !important;
+				text-align: center !important;
+				justify-content: center !important;
+				gap: 15px !important;
+				padding: 20px 0 !important;
+			}
+			.branding-text {
+				text-align: center !important;
+			}
+			.site-title {
+				font-size: 28px !important;
+			}
+			.site-description {
+				font-size: 13px !important;
+			}
+			.header-social-links {
+				justify-content: center !important;
+				margin-top: 5px !important;
+			}
+			
+			/* Mobile Menu Toggle */
+			.menu-toggle-label {
+				display: block !important;
+				cursor: pointer;
+				padding: 12px 0;
+				font-size: 16px;
+				font-weight: 600;
+				text-transform: uppercase;
+				border-top: 1px solid #eaeaea;
+				border-bottom: 1px solid #eaeaea;
+				background-color: #fafafa;
+				color: #333;
+				letter-spacing: 1px;
+			}
+			
+			/* Hide desktop menu on mobile by default */
+			.center-main-menu {
+				display: none;
+				width: 100%;
+			}
+			
+			/* Show menu when checkbox is checked */
+			#menu-toggle-checkbox:checked ~ .center-main-menu {
+				display: block !important;
+			}
+			
+			/* Stack mobile menu items */
+			.pmenu {
+				display: flex !important;
+				flex-direction: column !important;
+				align-items: center !important;
+				padding: 15px 0 !important;
+				float: none !important;
+				margin: 0 !important;
+			}
+			.pmenu li {
+				display: block !important;
+				margin: 8px 0 !important;
+				float: none !important;
+			}
+			.pmenu li a {
+				padding: 8px 20px !important;
+				font-size: 15px !important;
+			}
+		}
+	</style>
+</head>
+
+<body class="single-post">
+
+	<div class="side-nav">
+		<a href="../index.html">Home</a><a href="../about/index.html">About</a><a href="../https-the-urban-journal-com-latest-blogs/index.html">Blogs</a><a href="../events/index.html">Events</a>
+	</div>
+
+	<div id="page" class="site">
+
+		<header id="masthead" class="sheader site-header clearfix">
+			<div class="content-wrap">
+				<div class="site-branding" style="display: flex; align-items: center; justify-content: space-between; text-align: left; gap: 20px; width: 100%;">
+					<div style="display: flex; align-items: center; gap: 20px;">
+						<a href="../index.html" class="branding-logo-link" style="display: inline-block; flex-shrink: 0;">
+							<img src="../wp-content/uploads/2025/07/cropped-cropped-final_logo_TUJ-removebg-preview-300x300.png" alt="The Urban Journal Logo" style="width: 80px; height: 80px; max-height: 80px; object-fit: contain; display: block;" />
+						</a>
+						<div class="branding-text">
+							<p class="site-title" style="font-family: 'Times New Roman', Times, serif; font-size: 36px; margin: 0; font-weight: bold; line-height: 1.2;">
+								<a href="../index.html" rel="home" style="text-decoration: none; color: #000;">The Urban Journal</a>
+							</p>
+							<p class="site-description" style="margin: 5px 0 0 0; font-size: 15px; color: #666;">Politics, Psyche and Personal Truth</p>
+						</div>
+					</div>
+					<div class="header-social-links" style="display: flex; align-items: center; gap: 20px; flex-shrink: 0;">
+						<a href="https://x.com/JournalThe40534" target="_blank" rel="noopener noreferrer" class="social-link-x" title="X (Twitter)" style="color: #444; padding: 6px; text-decoration: none; transition: all 0.2s ease; display: inline-block;">
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="display: block;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+						</a>
+						<a href="https://www.instagram.com/theurbanjournall?igsh=MXY2ZmZiNmt2ZmNkZQ==" target="_blank" rel="noopener noreferrer" class="social-link-instagram" title="Instagram" style="color: #444; padding: 6px; text-decoration: none; transition: all 0.2s ease; display: inline-block;">
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+						</a>
+						<a href="https://in.linkedin.com/company/the-urban-journall" target="_blank" rel="noopener noreferrer" class="social-link-linkedin" title="LinkedIn" style="color: #444; padding: 6px; text-decoration: none; transition: all 0.2s ease; display: inline-block;">
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<nav id="primary-site-navigation" class="primary-menu main-navigation clearfix">
+				<div class="content-wrap text-center">
+					<input type="checkbox" id="menu-toggle-checkbox" style="display: none;">
+					<label for="menu-toggle-checkbox" class="menu-toggle-label" style="display: none;">
+						<span>☰ Menu</span>
+					</label>
+					
+					<div class="center-main-menu">
+						<ul id="primary-menu" class="pmenu">
+							<li class="menu-item "><a href="../index.html">Home</a></li><li class="menu-item "><a href="../about/index.html">About</a></li><li class="menu-item "><a href="../https-the-urban-journal-com-latest-blogs/index.html">Blogs</a></li><li class="menu-item "><a href="../events/index.html">Events</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</header>
+
+		<div id="content" class="site-content clearfix">
+			<div class="content-wrap">
+
+<div id="primary" class="featured-content content-area">
+	<main id="main" class="site-main">
+		<article id="post-2763" class="post-2763 post type-post status-publish format-standard hentry category-politics posts-entry fbox">
+			<header class="entry-header">
+				<h1 class="entry-title">Nostalgia's Gentle Lie: Why Yesterday Seems Better</h1>
+				<div class="entry-meta">
+					<div class="blog-data-wrapper">
+						<div class="post-data-divider"></div>
+						<div class="post-data-positioning">
+							<div class="post-data-text">
+								<span class="posted-on">Posted on <a href="../nostalgias-gentle-lie-why-yesterday-seems-better/index.html" rel="bookmark"><time class="entry-date published" datetime="2025-08-19 04:58:08">August 19, 2025</time></a></span>
+								<span class="byline"> by <span class="author vcard"><a class="url fn n" href="../about/index.html">Shivani</a></span></span>
+								<span class="cat-links"> in <a href="../category/psychology/index.html" rel="category tag">Psychology</a></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</header>
+			
+			<div class="entry-content">
+				<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>On calm Sunday evenings "the good old days" don’t knock softly, they barge in. A song from the early 2000s plays on the radio, a reel scrolls across your Instagram, or an old class photograph resurfaces in a dusty album. Suddenly, you are no longer here. You are thirteen again, sitting on the last bench of your classroom, doodling in the margins of your notebook, convinced that life begins after school.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>And yet, in memory, school feels golden. The pressure of exams, the sting of humiliation, the loneliness of adolescence all of it is blurred. What survives is the laughter in corridors, the thrill of PT periods, the joy of friendship bands tied in sweaty August heat.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>This is how memory deceives us not by lying, but by softening. It doesn’t return to the truth of what it was, but a version we can live with. And sometimes, that softened version is so intoxicating that we start holding it up against our present and find today unbearably pale in comparison.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>The Anatomy of Softness</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Contrary to what we believe, memory is not a faithful archivist. It does not preserve our past in full color. Instead, it edits. It sands down the sharp edges of pain and highlights the fragments of joy.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The nights spent cramming for board exams are eclipsed by the silly jokes exchanged with seat partners. The heartbreaks of college are reduced to a sepia montage of canteen laughter and long evening walks.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>We say the past was better, but what we mean is, The past feels softer.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>This is memory’s quiet mercy. If it returned every wound in its rawest form, survival would be impossible. But mercy has a hidden cost because in softening, memory also distorts. And when distortion becomes comparison, nostalgia turns from comfort into a subtle form of sabotage.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>The Media’s Playground</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>It is not a coincidence that nostalgia has become a cultural obsession. Scroll through Instagram Reels and you will find endless edits, “90s kids will remember this,” montages of old cartoons, Bollywood songs, grainy VHS filters. These are not just aesthetics, they are emotional triggers.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Media has learned what psychology already knows, nostalgia sells. Brands use it to make us buy, platforms use it to make us scroll, filmmakers use it to make us cry. What is packaged as “simpler times” is, in truth, a carefully curated fantasy of the past.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Take the flood of reels about school life chalk dust, farewell songs, farewell sarees, last-bench friendships. Rarely do these clips remind us of the suffocating discipline, the terror of viva exams, or the gnawing insecurity of teenage years. They romanticize a time that was far from easy but the softened version performs better, it goes viral.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>And so, nostalgia becomes not just a personal memory, but a cultural script we are taught to replay. A script where yesterday always wins and today is never enough.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>The Seduction of the Past</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The danger here is subtle but powerful. When the curated past feels warmer than our messy present, we begin to chase it. We revisit places, reconnect with people, replay songs hoping to feel what we once did. But what we are longing for is not the place, the people, or the song. It is the self who once inhabited them.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The schoolchild who believed life had yet to unfold. The college student who thought freedom was limitless. The younger self who had not yet tasted betrayal, loss, or disillusionment.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The ache of nostalgia is not for yesterday, It is for the innocence we once carried within it. But here lies the danger, if we keep measuring our current relationships, friendships, or joys against a softened past, we set them up to fail. Today will always feel harsher, because memory has already airbrushed yesterday.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>Do We Sabotage Our Present?</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>This is where nostalgia’s lie becomes costly. Many people quietly ruin their present by comparing it with their past. They look at the people they have today and feel no softness, no magic, forgetting that even in the past, those bonds were not soft in real time. They were messy, full of fights, confusion, and imperfections. It is only distance that makes them glow.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>But comparison is cruel, It convinces us that what we have now is not enough. That our friendships today lack depth, that our work today lacks joy, that our lovers today lack the tenderness of those who came before.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>What we forget is that softness is not inherent to the past, it is a filter memory applies after the fact. When we demand that our present match up to a perfected illusion, we rob it of the chance to become beautiful on its own terms.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>The Personal Truth of Longing</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>This is why nostalgia often blooms strongly in moments of disconnection. When the present feels chaotic or empty, the past seems golden. We cling to old diaries, old playlists, old photographs because they remind us of a time when we felt whole, when we belonged.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>But the truth is sharper, the past was not as soft as we remember. It only feels that way because distance has done its editing. The softness lies not in the time, but in the way our memory has chosen to hold it.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>If we don’t recognize this, nostalgia quietly feeds resentment. We grow bitter at present, dismissive of the people in it, always convinced that we are living in an inferior time. In chasing a polished memory, we cheat ourselves out of the raw, living joy that is still available now.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>Learning to See Clearly</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>To live with nostalgia honestly is not to resist it, but to see it clearly. Yes, the golden glow of the past is comforting but it is also curated. It is memory highlight reel, not its raw footage.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>And perhaps that is the reminder hidden in it, if memory can make yesterday feel softer, then maybe we can choose to soften today. Instead of glorifying what has already passed, we can create the tenderness we long for here, in the chaos of the present moment.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>That means laughing a little harder with the people beside us now. Trusting a little deeper, even if we’ve been hurt before. Choosing to belong fully, not to a time that is gone, but to the one unfolding in our hands.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>Conclusion</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The past will always appear gentler than it was because memory edits it that way. Media knows this, brands know this, and somewhere deep down, so do we. But the answer is not to chase the mirage. The answer is to see through it.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>What reels and songs and photographs awaken in us is not really a desire to go back, but a desire to feel alive again. To laugh with abandon, to trust without calculation, to belong fully.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>We cannot return to school corridors or college canteens. But we can return to ourselves the part of us that once lived without fear of endings. And in that return lies the truth of nostalgia, not that the past was softer, but that we are still capable of softness.</p>
+<!-- /wp:paragraph -->
+				<div class="post-tags">Tags: <a href="../tag/psychology/index.html" rel="tag">Psychology</a>, <a href="../tag/nostalgia/index.html" rel="tag">Nostalgia</a>, <a href="../tag/the-good-old-days/index.html" rel="tag">the good old days</a>, <a href="../tag/past/index.html" rel="tag">Past</a>, <a href="../tag/school-life/index.html" rel="tag">School life</a>, <a href="../tag/college-days/index.html" rel="tag">College days</a></div>
+			</div>
+		</article>
+		
+		
+    <div class="comment-respond fbox" style="margin-top: 30px; padding: 25px; background: #fff; border-radius: 4px; border: 1px solid #eee;">
+        <h3 class="comment-reply-title" style="font-family: 'Times New Roman', Times, serif; font-weight: bold; margin-bottom: 20px; border-bottom: 2px solid #333; padding-bottom: 10px;">Leave a Comment</h3>
+        <form id="commentform" style="display: flex; flex-direction: column; gap: 15px;">
+            <input type="hidden" name="post_id" value="2763">
+            <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 250px;">
+                    <label style="display: block; font-weight: 600; margin-bottom: 5px; font-size: 14px;">Name *</label>
+                    <input type="text" name="author" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 15px;">
+                </div>
+                <div style="flex: 1; min-width: 250px;">
+                    <label style="display: block; font-weight: 600; margin-bottom: 5px; font-size: 14px;">Email (will be verified) *</label>
+                    <input type="email" name="email" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 15px;">
+                </div>
+            </div>
+            <div>
+                <label style="display: block; font-weight: 600; margin-bottom: 5px; font-size: 14px;">Comment *</label>
+                <textarea name="comment" required rows="6" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 15px; resize: vertical;"></textarea>
+            </div>
+            <div id="comment-message" style="display: none; padding: 12px; border-radius: 4px; font-size: 15px; font-weight: 500;"></div>
+            <div>
+                <button type="submit" style="background: #111; color: #fff; border: none; padding: 12px 24px; font-size: 15px; font-weight: bold; border-radius: 4px; cursor: pointer; transition: background 0.2s ease;">Submit Comment</button>
+            </div>
+        </form>
+        <script>
+            document.getElementById('commentform').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const form = e.target;
+                const button = form.querySelector('button[type="submit"]');
+                const msgDiv = document.getElementById('comment-message');
+                
+                button.disabled = true;
+                button.textContent = 'Sending verification...';
+                msgDiv.style.display = 'none';
+                
+                const data = {
+                    post_id: form.post_id.value,
+                    author: form.author.value,
+                    email: form.email.value,
+                    comment: form.comment.value
+                };
+                
+                fetch('/api/submit_comment', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                })
+                .then(res => res.json())
+                .then(res => {
+                    if (res.success) {
+                        msgDiv.style.backgroundColor = '#d4edda';
+                        msgDiv.style.color = '#155724';
+                        msgDiv.style.border = '1px solid #c3e6cb';
+                        msgDiv.textContent = 'A verification email has been sent. Please check your inbox and click the link to verify your comment.';
+                        msgDiv.style.display = 'block';
+                        form.reset();
+                    } else {
+                        throw new Error(res.message || 'Failed to submit comment.');
+                    }
+                })
+                .catch(err => {
+                    msgDiv.style.backgroundColor = '#f8d7da';
+                    msgDiv.style.color = '#721c24';
+                    msgDiv.style.border = '1px solid #f5c6cb';
+                    msgDiv.textContent = err.message;
+                    msgDiv.style.display = 'block';
+                })
+                .finally(() => {
+                    button.disabled = false;
+                    button.textContent = 'Submit Comment';
+                });
+            });
+        </script>
+    </div>
+    
+	</main>
+</div>
+
+<aside id="secondary" class="featured-sidebar widget-area">
+	<div class="widget widget_search">
+		<form role="search" method="get" class="search-form" action="#">
+			<label>
+				<span class="screen-reader-text">Search for:</span>
+				<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s" />
+			</label>
+			<input type="submit" class="search-submit" value="Search" />
+		</form>
+	</div>
+	
+	<div class="widget widget_recent_entries">
+		<h2 class="widgettitle">Recent Posts</h2>
+		<ul>
+			<li><a href="../your-exhaustion-has-a-business-model/index.html">Your Exhaustion Has a Business Model</a></li><li><a href="../when-air-becomes-a-crisis-living-through-delhis-pollution-pandemic/index.html">When Air Becomes a Crisis: Living Through Delhi's Pollution Pandemic</a></li><li><a href="../when-healing-becomes-hustle-the-lie-of-modern-self-help/index.html">When Healing Becomes Hustle: The Lie of Modern Self-Help</a></li><li><a href="../the-city-that-failed-geography-gurugram/index.html">The City That Failed Geography: Gurugram</a></li><li><a href="../nostalgias-gentle-lie-why-yesterday-seems-better/index.html">Nostalgia's Gentle Lie: Why Yesterday Seems Better</a></li>
+		</ul>
+	</div>
+
+	<div class="widget widget_recent_comments">
+		<h2 class="widgettitle">Recent Comments</h2>
+		<ul id="recentcomments">
+			<li>No comments yet</li>
+		</ul>
+	</div>
+
+	<div class="widget widget_archive">
+		<h2 class="widgettitle">Archives</h2>
+		<ul>
+			<li><a href="../date/2026/03/index.html">March 2026</a></li><li><a href="../date/2025/11/index.html">November 2025</a></li><li><a href="../date/2025/10/index.html">October 2025</a></li><li><a href="../date/2025/09/index.html">September 2025</a></li><li><a href="../date/2025/08/index.html">August 2025</a></li><li><a href="../date/2025/07/index.html">July 2025</a></li><li><a href="../date/2025/06/index.html">June 2025</a></li>
+		</ul>
+	</div>
+
+	<div class="widget widget_categories">
+		<h2 class="widgettitle">Categories</h2>
+		<ul>
+			<li class="cat-item"><a href="../category/politics/index.html">Politics</a></li><li class="cat-item"><a href="../category/psychology/index.html">Psychology</a></li><li class="cat-item"><a href="../category/personal-truth/index.html">Personal truth</a></li>
+		</ul>
+	</div>
+</aside>
+
+			</div>
+		</div><!-- #content -->
+
+		<footer id="colophon" class="site-footer clearfix">
+			<div class="content-wrap">
+				<div class="footer-column-wrapper">
+					<div class="footer-column-three footer-column-left">
+						<div class="widget widget_media_image">
+							<a href="../index.html">
+								<img src="../wp-content/uploads/2025/07/cropped-cropped-final_logo_TUJ-removebg-preview-300x300.png" alt="logo of the urban journal" width="136" height="136" class="image wp-image-2526 attachment-full size-full" style="max-width: 100%; height: auto;" />
+							</a>
+						</div>
+						<div class="widget widget_block">
+							<p><strong><a href="../index.html" style="color: inherit;">The Urban Journal</a></strong> is your space for bold perspectives on politics, deep dives into human psychology, and raw reflections on personal truth. Thought-provoking blogs that question, connect, and challenge.</p>
+						</div>
+						<div class="widget widget_block" style="margin-top: 15px;">
+							<div class="footer-social-links" style="display: flex; align-items: center; gap: 20px; margin-top: 10px;">
+								<a href="https://x.com/JournalThe40534" target="_blank" rel="noopener noreferrer" class="social-link-x" title="X (Twitter)" style="color: #bbb; padding: 6px; text-decoration: none; transition: all 0.2s ease; display: inline-block;">
+									<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="display: block;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+								</a>
+								<a href="https://www.instagram.com/theurbanjournall?igsh=MXY2ZmZiNmt2ZmNkZQ==" target="_blank" rel="noopener noreferrer" class="social-link-instagram" title="Instagram" style="color: #bbb; padding: 6px; text-decoration: none; transition: all 0.2s ease; display: inline-block;">
+									<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+								</a>
+								<a href="https://in.linkedin.com/company/the-urban-journall" target="_blank" rel="noopener noreferrer" class="social-link-linkedin" title="LinkedIn" style="color: #bbb; padding: 6px; text-decoration: none; transition: all 0.2s ease; display: inline-block;">
+									<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+								</a>
+							</div>
+						</div>
+					</div>
+					
+					<div class="footer-column-three footer-column-middle">
+						<div class="widget widget_categories">
+							<h2 class="widgettitle">Categories</h2>
+							<ul>
+								<li class="cat-item"><a href="../category/politics/index.html">Politics</a></li><li class="cat-item"><a href="../category/psychology/index.html">Psychology</a></li><li class="cat-item"><a href="../category/personal-truth/index.html">Personal truth</a></li>
+							</ul>
+						</div>
+					</div>
+					
+					<div class="footer-column-three footer-column-right">
+						<!-- Empty Column -->
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div><!-- #page -->
+</body>
+</html>

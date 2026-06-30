@@ -6,7 +6,7 @@ import datetime
 
 # Paths
 db_path = "/Users/arjungupta/.gemini/antigravity-ide/brain/06024764-27c8-47f9-83ce-3f38b4c267d4/scratch/backup.db"
-output_dir = "/Users/arjungupta/Downloads/TUJ_Backup"
+output_dir = "/Users/arjungupta/Downloads/TUJ_Backup/public"
 
 # Connect to DB
 conn = sqlite3.connect(db_path)

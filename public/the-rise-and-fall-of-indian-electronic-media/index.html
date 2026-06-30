@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>The Fall of Indian Electronic Media - The Urban Journal</title>
+	<meta name="description" content="&nbsp;The media often, hailed as the fourth pillar of democracy has been crucial in forming contemporary Indian democracy, and citizens’ political awa...">
+	<meta name="robots" content="index, follow">
+	<link rel="canonical" href="https://the-urban-journal.com/the-rise-and-fall-of-indian-electronic-media/">
+	
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,400&family=DM+Serif+Display:ital@0;1&family=Roboto:ital,wght@0,300;0,400;0,700;1,400&family=DM+Serif+Text:ital@0;1&family=Roboto+Slab:wght@300;400;700&family=Roboto+Mono:ital,wght@0,300;0,400;0,700;1,400&family=Averia+Sans+Libre:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+	
+	<!-- WordPress & Theme Core Stylesheets -->
+	<link rel="stylesheet" href="../wp-includes/css/dist/block-library/style.min.css">
+	<link rel="stylesheet" href="../wp-content/plugins/ultimate-addons-for-gutenberg/dist/blocks.css">
+	<link rel="stylesheet" href="../wp-content/themes/personalblogily/style.css">
+	<link rel="stylesheet" href="../wp-content/themes/simply-personal-blog/style.css">
+	
+	<!-- Page/Post Specific Stylesheets -->
+	
+	
+	<!-- Responsive Mobile Styling & Pure CSS Mobile Menu -->
+	<style>
+		/* Floating Side Navigation on Desktop */
+		@media (min-width: 1200px) {
+			.side-nav {
+				position: fixed;
+				left: 40px;
+				top: 50%;
+				transform: translateY(-50%);
+				z-index: 999;
+				display: flex;
+				flex-direction: column;
+				gap: 18px;
+				background: #ffffff;
+				padding: 22px 16px;
+				border-radius: 6px;
+				box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+				border: 1px solid #e0e0e0;
+				transition: all 0.3s ease;
+				
+				/* Default state for older/unsupported browsers (always visible) */
+				opacity: 1;
+				visibility: visible;
+			}
+			
+			/* Dynamic scroll-driven animation for modern browsers */
+			@supports (animation-timeline: scroll()) {
+				@keyframes show-side-nav {
+					0% {
+						opacity: 0;
+						visibility: hidden;
+						transform: translateY(-50%) scale(0.95);
+					}
+					100% {
+						opacity: 1;
+						visibility: visible;
+						transform: translateY(-50%) scale(1);
+					}
+				}
+				.side-nav {
+					animation: show-side-nav linear both;
+					animation-timeline: scroll();
+					animation-range: 140px 220px; /* Appears after scrolling past the top nav (140px-220px) */
+				}
+			}
+
+			.side-nav a {
+				font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+				font-size: 12px;
+				color: #444;
+				text-decoration: none;
+				font-weight: 600;
+				text-transform: uppercase;
+				letter-spacing: 1px;
+				transition: color 0.2s ease, transform 0.2s ease;
+				display: block;
+				text-align: center;
+			}
+			.side-nav a:hover {
+				color: #000000;
+				transform: scale(1.05);
+			}
+		}
+		@media (max-width: 1199px) {
+			.side-nav {
+				display: none !important;
+			}
+		}
+
+		/* Image Consistency and Justified Text */
+		.uagb-post__image img, 
+		.uagb-post__image a img {
+			width: 100% !important;
+			height: 240px !important;
+			object-fit: cover !important;
+		}
+		.uagb-post__excerpt p, 
+		.entry-content p {
+			text-align: justify !important;
+			text-justify: inter-word;
+		}
+
+		/* Fix for post grid layout */
+		.uagb-post-grid.is-grid {
+			display: grid !important;
+			grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+			gap: 30px !important;
+		}
+		@media (max-width: 976px) {
+			.uagb-post-grid.is-grid {
+				grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+				gap: 20px !important;
+			}
+		}
+		@media (max-width: 767px) {
+			.uagb-post-grid.is-grid {
+				grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+				gap: 15px !important;
+			}
+		}
+
+		.header-social-links a:hover {
+			color: #0073aa !important;
+			transform: scale(1.1);
+		}
+		.footer-social-links a:hover {
+			color: #ffffff !important;
+			transform: scale(1.1);
+		}
+
+		@media (max-width: 767px) {
+			.main-navigation {
+				display: block !important;
+			}
+			.site-branding {
+				flex-direction: column !important;
+				text-align: center !important;
+				justify-content: center !important;
+				gap: 15px !important;
+				padding: 20px 0 !important;
+			}
+			.branding-text {
+				text-align: center !important;
+			}
+			.site-title {
+				font-size: 28px !important;
+			}
+			.site-description {
+				font-size: 13px !important;
+			}
+			.header-social-links {
+				justify-content: center !important;
+				margin-top: 5px !important;
+			}
+			
+			/* Mobile Menu Toggle */
+			.menu-toggle-label {
+				display: block !important;
+				cursor: pointer;
+				padding: 12px 0;
+				font-size: 16px;
+				font-weight: 600;
+				text-transform: uppercase;
+				border-top: 1px solid #eaeaea;
+				border-bottom: 1px solid #eaeaea;
+				background-color: #fafafa;
+				color: #333;
+				letter-spacing: 1px;
+			}
+			
+			/* Hide desktop menu on mobile by default */
+			.center-main-menu {
+				display: none;
+				width: 100%;
+			}
+			
+			/* Show menu when checkbox is checked */
+			#menu-toggle-checkbox:checked ~ .center-main-menu {
+				display: block !important;
+			}
+			
+			/* Stack mobile menu items */
+			.pmenu {
+				display: flex !important;
+				flex-direction: column !important;
+				align-items: center !important;
+				padding: 15px 0 !important;
+				float: none !important;
+				margin: 0 !important;
+			}
+			.pmenu li {
+				display: block !important;
+				margin: 8px 0 !important;
+				float: none !important;
+			}
+			.pmenu li a {
+				padding: 8px 20px !important;
+				font-size: 15px !important;
+			}
+		}
+	</style>
+</head>
+
+<body class="single-post">
+
+	<div class="side-nav">
+		<a href="../index.html">Home</a><a href="../about/index.html">About</a><a href="../https-the-urban-journal-com-latest-blogs/index.html">Blogs</a><a href="../events/index.html">Events</a>
+	</div>
+
+	<div id="page" class="site">
+
+		<header id="masthead" class="sheader site-header clearfix">
+			<div class="content-wrap">
+				<div class="site-branding" style="display: flex; align-items: center; justify-content: space-between; text-align: left; gap: 20px; width: 100%;">
+					<div style="display: flex; align-items: center; gap: 20px;">
+						<a href="../index.html" class="branding-logo-link" style="display: inline-block; flex-shrink: 0;">
+							<img src="../wp-content/uploads/2025/07/cropped-cropped-final_logo_TUJ-removebg-preview-300x300.png" alt="The Urban Journal Logo" style="width: 80px; height: 80px; max-height: 80px; object-fit: contain; display: block;" />
+						</a>
+						<div class="branding-text">
+							<p class="site-title" style="font-family: 'Times New Roman', Times, serif; font-size: 36px; margin: 0; font-weight: bold; line-height: 1.2;">
+								<a href="../index.html" rel="home" style="text-decoration: none; color: #000;">The Urban Journal</a>
+							</p>
+							<p class="site-description" style="margin: 5px 0 0 0; font-size: 15px; color: #666;">Politics, Psyche and Personal Truth</p>
+						</div>
+					</div>
+					<div class="header-social-links" style="display: flex; align-items: center; gap: 20px; flex-shrink: 0;">
+						<a href="https://x.com/JournalThe40534" target="_blank" rel="noopener noreferrer" class="social-link-x" title="X (Twitter)" style="color: #444; padding: 6px; text-decoration: none; transition: all 0.2s ease; display: inline-block;">
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="display: block;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+						</a>
+						<a href="https://www.instagram.com/theurbanjournall?igsh=MXY2ZmZiNmt2ZmNkZQ==" target="_blank" rel="noopener noreferrer" class="social-link-instagram" title="Instagram" style="color: #444; padding: 6px; text-decoration: none; transition: all 0.2s ease; display: inline-block;">
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+						</a>
+						<a href="https://in.linkedin.com/company/the-urban-journall" target="_blank" rel="noopener noreferrer" class="social-link-linkedin" title="LinkedIn" style="color: #444; padding: 6px; text-decoration: none; transition: all 0.2s ease; display: inline-block;">
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<nav id="primary-site-navigation" class="primary-menu main-navigation clearfix">
+				<div class="content-wrap text-center">
+					<input type="checkbox" id="menu-toggle-checkbox" style="display: none;">
+					<label for="menu-toggle-checkbox" class="menu-toggle-label" style="display: none;">
+						<span>☰ Menu</span>
+					</label>
+					
+					<div class="center-main-menu">
+						<ul id="primary-menu" class="pmenu">
+							<li class="menu-item "><a href="../index.html">Home</a></li><li class="menu-item "><a href="../about/index.html">About</a></li><li class="menu-item "><a href="../https-the-urban-journal-com-latest-blogs/index.html">Blogs</a></li><li class="menu-item "><a href="../events/index.html">Events</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</header>
+
+		<div id="content" class="site-content clearfix">
+			<div class="content-wrap">
+
+<div id="primary" class="featured-content content-area">
+	<main id="main" class="site-main">
+		<article id="post-2556" class="post-2556 post type-post status-publish format-standard hentry category-politics posts-entry fbox">
+			<header class="entry-header">
+				<h1 class="entry-title">The Fall of Indian Electronic Media</h1>
+				<div class="entry-meta">
+					<div class="blog-data-wrapper">
+						<div class="post-data-divider"></div>
+						<div class="post-data-positioning">
+							<div class="post-data-text">
+								<span class="posted-on">Posted on <a href="../the-rise-and-fall-of-indian-electronic-media/index.html" rel="bookmark"><time class="entry-date published" datetime="2025-07-08 08:57:58">July 08, 2025</time></a></span>
+								<span class="byline"> by <span class="author vcard"><a class="url fn n" href="../about/index.html">Shivani</a></span></span>
+								<span class="cat-links"> in <a href="../category/politics/index.html" rel="category tag">Politics</a></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</header>
+			
+			<div class="entry-content">
+				<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>&nbsp;The media often, hailed as the fourth pillar of democracy has been crucial in forming contemporary Indian democracy, and citizens’ political awareness. It was more than just a news source; it was a force for nation-building because of its capacity to spread knowledge, sway public opinion, and hold leaders accountable. However, there is a sharp fall in the path of media which needs careful examination. From idealism to populism, from critical journalism to infotainment and partisan narratives.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>Historical Roots of a Democratic Media</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p> The Indian independence movement is where the media first emerged as a tool for reform and resistance. In addition to spearheading political uprisings, notable figures such as <em>Mahatma Gandhi, Jawaharlal Nehru,</em> and <em>Subhash Chandra Bose</em> also led intellectual ones through their magazines, <em>Harijan, The national Herald </em>and <em>Frontier</em> respectively. These weren't just newsletters; they were forums for ideation, mobilization, and awareness. They opposed colonial propaganda and propagated the ideologies of justice, nonviolence, self-rule, and nationalism.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Following independence, the media took on a new function, nation-building. Mass communication was used as a tool for social education as India moved from colonial authority to a democratic republic. Launched in 1967, Doordarshan's Krishi Darshan is a shining example of an effort to close the knowledge gap for rural farmers by providing locally relevant agricultural advice. During this time, development communication was the focus of radio and television programming, which matched the goals of a newly autonomous, agrarian economy.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>The Emergency and the Spine of Journalism</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Perhaps the most pivotal event in Indian media history occurred during the Emergency (1975–1977). When it was declared by then Prime Minister Indira Gandhi, all civil liberties were suspended, and the media was one of the first institutions to be silenced. The evening of June 25, 1975, press control was enforced, and all news had to be approved by the government before publication.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>This period, however, also revealed the media’s spine. Popular magazines like Mainstream and Seminar chose to suspend operations rather than compromise editorial integrity. The Indian Express and The Hindustan Times protested by leaving their editorial pages blank or marked in black, silent yet powerful acts of resistance. Journalists such as B.G. Verghese, C.R. Irani, Kuldip Nayar, and Ishrat Ali Siddiqui emerged as vocal critics of authoritarianism. Their dissent was not driven by ideology alone but by a commitment to the foundational principles of journalism: truth, fairness, and public accountability.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>This was a time when the media still understood its constitutional mandate. It did not shrink from confronting power, even when power was at its most oppressive. The courage displayed then was not just professional, it was profoundly ethical.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>Contemporary Landscape: A Crisis of Credibility</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Fast-forward to the present, and the media landscape presents a sobering contrast. While the tools of communication have grown exponentially with 24/7 news cycles, social media integration, and AI-enhanced content, the soul of journalism appears diminished. What we witness today on mainstream electronic media can scarcely be described as critical or independent journalism.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Instead of questioning power, a significant section of the media appears complicit in its consolidation. Prime-time debates are often reduced to spectacles more focused on generating outrage than fostering understanding. The principles of objectivity, editorial independence, and the representation of marginalized voices are increasingly sacrificed at the altar of TRPs and political patronage.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Socio-political movements that deserve coverage and critical engagement, the anti-CAA protests of 2019, the farmers’ protests of 2021, and the Ladakhi demand for Sixth Schedule status in 2023 were either vilified or conveniently ignored. Protesters are branded as “anti-nationals,” “Urban Naxals,” or worse, “terrorists.” This labelling not only delegitimizes dissent but endangers the very essence of democratic citizenship.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>The Forgotten Legacy of Resistance</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>It is worth revisiting how the same media once stood shoulder to shoulder with the public in moments of national reckoning. The "India Against Corruption" movement, which paved the way for the formation of the Aam Aadmi Party, found massive support through electronic media coverage. Similarly, the widespread media coverage of the 2012 Delhi gang rape case amplified public anger and was instrumental in the passage of the Criminal Law (Amendment) Act, 2013, a watershed moment in India’s legal history regarding gender justice.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Today, however, that spirit of accountability seems hollow. Public interest journalism has given way to personality-driven narratives, and investigative reporting has become a rare exception. The decline is not just editorial, it is institutional.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>The Cost of Silence</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>When the media relinquishes its role as the watchdog of democracy, the consequences are manifold. One, it erodes public trust. Citizens begin to see news as biased or scripted, and misinformation fills the vacuum. Two, it weakens the institutions that rely on media scrutiny to function ethically, from the judiciary and executive to corporate houses and civil society. And three, it renders invisible the voices of the vulnerable, who depend on the media for visibility and redress.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>What is unfolding in Indian media today is not merely a crisis of content; it is a crisis of character. The transformation from a platform of resistance to one of reinforcement of the status quo is stark and alarming.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>In Conclusion: The Way Forward</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>There remains hope, however, in the emergence of independent digital platforms and citizen journalists who are trying to reclaim the space once occupied by principled journalism. But they often lack the resources, reach, and protection afforded to mainstream outlets.<strong></strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Reclaiming the spirit of ethical journalism is not just a media responsibility; it is a societal imperative. Audiences must demand more than theatrics. Media houses must prioritize credibility over convenience. And journalists must remember that the pen, or the microphone, is not just a tool; it is a responsibility.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>To echo the sentiments of the past, journalism must once again learn to afflict the comfortable and comfort the afflicted. Anything less, and we risk turning our fourth pillar into little more than a crumbling façade.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>  Sources: <a href="https://www.hindustantimes.com/">https://www.hindustantimes.com/</a>, <a href="https://indianexpress.com/">https://indianexpress.com/</a></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph -->
+				<div class="post-tags">Tags: <a href="../tag/journalism/index.html" rel="tag">Journalism</a>, <a href="../tag/sensationalism/index.html" rel="tag">Sensationalism</a></div>
+			</div>
+		</article>
+		
+		
+    <div class="comment-respond fbox" style="margin-top: 30px; padding: 25px; background: #fff; border-radius: 4px; border: 1px solid #eee;">
+        <h3 class="comment-reply-title" style="font-family: 'Times New Roman', Times, serif; font-weight: bold; margin-bottom: 20px; border-bottom: 2px solid #333; padding-bottom: 10px;">Leave a Comment</h3>
+        <form id="commentform" style="display: flex; flex-direction: column; gap: 15px;">
+            <input type="hidden" name="post_id" value="2556">
+            <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 250px;">
+                    <label style="display: block; font-weight: 600; margin-bottom: 5px; font-size: 14px;">Name *</label>
+                    <input type="text" name="author" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 15px;">
+                </div>
+                <div style="flex: 1; min-width: 250px;">
+                    <label style="display: block; font-weight: 600; margin-bottom: 5px; font-size: 14px;">Email (will be verified) *</label>
+                    <input type="email" name="email" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 15px;">
+                </div>
+            </div>
+            <div>
+                <label style="display: block; font-weight: 600; margin-bottom: 5px; font-size: 14px;">Comment *</label>
+                <textarea name="comment" required rows="6" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 15px; resize: vertical;"></textarea>
+            </div>
+            <div id="comment-message" style="display: none; padding: 12px; border-radius: 4px; font-size: 15px; font-weight: 500;"></div>
+            <div>
+                <button type="submit" style="background: #111; color: #fff; border: none; padding: 12px 24px; font-size: 15px; font-weight: bold; border-radius: 4px; cursor: pointer; transition: background 0.2s ease;">Submit Comment</button>
+            </div>
+        </form>
+        <script>
+            document.getElementById('commentform').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const form = e.target;
+                const button = form.querySelector('button[type="submit"]');
+                const msgDiv = document.getElementById('comment-message');
+                
+                button.disabled = true;
+                button.textContent = 'Sending verification...';
+                msgDiv.style.display = 'none';
+                
+                const data = {
+                    post_id: form.post_id.value,
+                    author: form.author.value,
+                    email: form.email.value,
+                    comment: form.comment.value
+                };
+                
+                fetch('/api/submit_comment', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                })
+                .then(res => res.json())
+                .then(res => {
+                    if (res.success) {
+                        msgDiv.style.backgroundColor = '#d4edda';
+                        msgDiv.style.color = '#155724';
+                        msgDiv.style.border = '1px solid #c3e6cb';
+                        msgDiv.textContent = 'A verification email has been sent. Please check your inbox and click the link to verify your comment.';
+                        msgDiv.style.display = 'block';
+                        form.reset();
+                    } else {
+                        throw new Error(res.message || 'Failed to submit comment.');
+                    }
+                })
+                .catch(err => {
+                    msgDiv.style.backgroundColor = '#f8d7da';
+                    msgDiv.style.color = '#721c24';
+                    msgDiv.style.border = '1px solid #f5c6cb';
+                    msgDiv.textContent = err.message;
+                    msgDiv.style.display = 'block';
+                })
+                .finally(() => {
+                    button.disabled = false;
+                    button.textContent = 'Submit Comment';
+                });
+            });
+        </script>
+    </div>
+    
+	</main>
+</div>
+
+<aside id="secondary" class="featured-sidebar widget-area">
+	<div class="widget widget_search">
+		<form role="search" method="get" class="search-form" action="#">
+			<label>
+				<span class="screen-reader-text">Search for:</span>
+				<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s" />
+			</label>
+			<input type="submit" class="search-submit" value="Search" />
+		</form>
+	</div>
+	
+	<div class="widget widget_recent_entries">
+		<h2 class="widgettitle">Recent Posts</h2>
+		<ul>
+			<li><a href="../your-exhaustion-has-a-business-model/index.html">Your Exhaustion Has a Business Model</a></li><li><a href="../when-air-becomes-a-crisis-living-through-delhis-pollution-pandemic/index.html">When Air Becomes a Crisis: Living Through Delhi's Pollution Pandemic</a></li><li><a href="../when-healing-becomes-hustle-the-lie-of-modern-self-help/index.html">When Healing Becomes Hustle: The Lie of Modern Self-Help</a></li><li><a href="../the-city-that-failed-geography-gurugram/index.html">The City That Failed Geography: Gurugram</a></li><li><a href="../nostalgias-gentle-lie-why-yesterday-seems-better/index.html">Nostalgia's Gentle Lie: Why Yesterday Seems Better</a></li>
+		</ul>
+	</div>
+
+	<div class="widget widget_recent_comments">
+		<h2 class="widgettitle">Recent Comments</h2>
+		<ul id="recentcomments">
+			<li>No comments yet</li>
+		</ul>
+	</div>
+
+	<div class="widget widget_archive">
+		<h2 class="widgettitle">Archives</h2>
+		<ul>
+			<li><a href="../date/2026/03/index.html">March 2026</a></li><li><a href="../date/2025/11/index.html">November 2025</a></li><li><a href="../date/2025/10/index.html">October 2025</a></li><li><a href="../date/2025/09/index.html">September 2025</a></li><li><a href="../date/2025/08/index.html">August 2025</a></li><li><a href="../date/2025/07/index.html">July 2025</a></li><li><a href="../date/2025/06/index.html">June 2025</a></li>
+		</ul>
+	</div>
+
+	<div class="widget widget_categories">
+		<h2 class="widgettitle">Categories</h2>
+		<ul>
+			<li class="cat-item"><a href="../category/politics/index.html">Politics</a></li><li class="cat-item"><a href="../category/psychology/index.html">Psychology</a></li><li class="cat-item"><a href="../category/personal-truth/index.html">Personal truth</a></li>
+		</ul>
+	</div>
+</aside>
+
+			</div>
+		</div><!-- #content -->
+
+		<footer id="colophon" class="site-footer clearfix">
+			<div class="content-wrap">
+				<div class="footer-column-wrapper">
+					<div class="footer-column-three footer-column-left">
+						<div class="widget widget_media_image">
+							<a href="../index.html">
+								<img src="../wp-content/uploads/2025/07/cropped-cropped-final_logo_TUJ-removebg-preview-300x300.png" alt="logo of the urban journal" width="136" height="136" class="image wp-image-2526 attachment-full size-full" style="max-width: 100%; height: auto;" />
+							</a>
+						</div>
+						<div class="widget widget_block">
+							<p><strong><a href="../index.html" style="color: inherit;">The Urban Journal</a></strong> is your space for bold perspectives on politics, deep dives into human psychology, and raw reflections on personal truth. Thought-provoking blogs that question, connect, and challenge.</p>
+						</div>
+						<div class="widget widget_block" style="margin-top: 15px;">
+							<div class="footer-social-links" style="display: flex; align-items: center; gap: 20px; margin-top: 10px;">
+								<a href="https://x.com/JournalThe40534" target="_blank" rel="noopener noreferrer" class="social-link-x" title="X (Twitter)" style="color: #bbb; padding: 6px; text-decoration: none; transition: all 0.2s ease; display: inline-block;">
+									<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="display: block;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+								</a>
+								<a href="https://www.instagram.com/theurbanjournall?igsh=MXY2ZmZiNmt2ZmNkZQ==" target="_blank" rel="noopener noreferrer" class="social-link-instagram" title="Instagram" style="color: #bbb; padding: 6px; text-decoration: none; transition: all 0.2s ease; display: inline-block;">
+									<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+								</a>
+								<a href="https://in.linkedin.com/company/the-urban-journall" target="_blank" rel="noopener noreferrer" class="social-link-linkedin" title="LinkedIn" style="color: #bbb; padding: 6px; text-decoration: none; transition: all 0.2s ease; display: inline-block;">
+									<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+								</a>
+							</div>
+						</div>
+					</div>
+					
+					<div class="footer-column-three footer-column-middle">
+						<div class="widget widget_categories">
+							<h2 class="widgettitle">Categories</h2>
+							<ul>
+								<li class="cat-item"><a href="../category/politics/index.html">Politics</a></li><li class="cat-item"><a href="../category/psychology/index.html">Psychology</a></li><li class="cat-item"><a href="../category/personal-truth/index.html">Personal truth</a></li>
+							</ul>
+						</div>
+					</div>
+					
+					<div class="footer-column-three footer-column-right">
+						<!-- Empty Column -->
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div><!-- #page -->
+</body>
+</html>

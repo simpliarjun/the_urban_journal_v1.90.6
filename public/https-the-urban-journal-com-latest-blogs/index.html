@@ -1,0 +1,836 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Blogs - The Urban Journal</title>
+	<meta name="robots" content="index, follow">
+	<link rel="canonical" href="https://the-urban-journal.com/https-the-urban-journal-com-latest-blogs/">
+	
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,400&family=DM+Serif+Display:ital@0;1&family=Roboto:ital,wght@0,300;0,400;0,700;1,400&family=DM+Serif+Text:ital@0;1&family=Roboto+Slab:wght@300;400;700&family=Roboto+Mono:ital,wght@0,300;0,400;0,700;1,400&family=Averia+Sans+Libre:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+	
+	<!-- WordPress & Theme Core Stylesheets -->
+	<link rel="stylesheet" href="../wp-includes/css/dist/block-library/style.min.css">
+	<link rel="stylesheet" href="../wp-content/plugins/ultimate-addons-for-gutenberg/dist/blocks.css">
+	<link rel="stylesheet" href="../wp-content/themes/personalblogily/style.css">
+	<link rel="stylesheet" href="../wp-content/themes/simply-personal-blog/style.css">
+	
+	<!-- Page/Post Specific Stylesheets -->
+	
+	
+	<!-- Responsive Mobile Styling & Pure CSS Mobile Menu -->
+	<style>
+		/* Floating Side Navigation on Desktop */
+		@media (min-width: 1200px) {
+			.side-nav {
+				position: fixed;
+				left: 40px;
+				top: 50%;
+				transform: translateY(-50%);
+				z-index: 999;
+				display: flex;
+				flex-direction: column;
+				gap: 18px;
+				background: #ffffff;
+				padding: 22px 16px;
+				border-radius: 6px;
+				box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+				border: 1px solid #e0e0e0;
+				transition: all 0.3s ease;
+				
+				/* Default state for older/unsupported browsers (always visible) */
+				opacity: 1;
+				visibility: visible;
+			}
+			
+			/* Dynamic scroll-driven animation for modern browsers */
+			@supports (animation-timeline: scroll()) {
+				@keyframes show-side-nav {
+					0% {
+						opacity: 0;
+						visibility: hidden;
+						transform: translateY(-50%) scale(0.95);
+					}
+					100% {
+						opacity: 1;
+						visibility: visible;
+						transform: translateY(-50%) scale(1);
+					}
+				}
+				.side-nav {
+					animation: show-side-nav linear both;
+					animation-timeline: scroll();
+					animation-range: 140px 220px; /* Appears after scrolling past the top nav (140px-220px) */
+				}
+			}
+
+			.side-nav a {
+				font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+				font-size: 12px;
+				color: #444;
+				text-decoration: none;
+				font-weight: 600;
+				text-transform: uppercase;
+				letter-spacing: 1px;
+				transition: color 0.2s ease, transform 0.2s ease;
+				display: block;
+				text-align: center;
+			}
+			.side-nav a:hover {
+				color: #000000;
+				transform: scale(1.05);
+			}
+		}
+		@media (max-width: 1199px) {
+			.side-nav {
+				display: none !important;
+			}
+		}
+
+		/* Image Consistency and Justified Text */
+		.uagb-post__image img, 
+		.uagb-post__image a img {
+			width: 100% !important;
+			height: 240px !important;
+			object-fit: cover !important;
+		}
+		.uagb-post__excerpt p, 
+		.entry-content p {
+			text-align: justify !important;
+			text-justify: inter-word;
+		}
+
+		/* Fix for post grid layout */
+		.uagb-post-grid.is-grid {
+			display: grid !important;
+			grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+			gap: 30px !important;
+		}
+		@media (max-width: 976px) {
+			.uagb-post-grid.is-grid {
+				grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+				gap: 20px !important;
+			}
+		}
+		@media (max-width: 767px) {
+			.uagb-post-grid.is-grid {
+				grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+				gap: 15px !important;
+			}
+		}
+
+		.header-social-links a:hover {
+			color: #0073aa !important;
+			transform: scale(1.1);
+		}
+		.footer-social-links a:hover {
+			color: #ffffff !important;
+			transform: scale(1.1);
+		}
+
+		@media (max-width: 767px) {
+			.main-navigation {
+				display: block !important;
+			}
+			.site-branding {
+				flex-direction: column !important;
+				text-align: center !important;
+				justify-content: center !important;
+				gap: 15px !important;
+				padding: 20px 0 !important;
+			}
+			.branding-text {
+				text-align: center !important;
+			}
+			.site-title {
+				font-size: 28px !important;
+			}
+			.site-description {
+				font-size: 13px !important;
+			}
+			.header-social-links {
+				justify-content: center !important;
+				margin-top: 5px !important;
+			}
+			
+			/* Mobile Menu Toggle */
+			.menu-toggle-label {
+				display: block !important;
+				cursor: pointer;
+				padding: 12px 0;
+				font-size: 16px;
+				font-weight: 600;
+				text-transform: uppercase;
+				border-top: 1px solid #eaeaea;
+				border-bottom: 1px solid #eaeaea;
+				background-color: #fafafa;
+				color: #333;
+				letter-spacing: 1px;
+			}
+			
+			/* Hide desktop menu on mobile by default */
+			.center-main-menu {
+				display: none;
+				width: 100%;
+			}
+			
+			/* Show menu when checkbox is checked */
+			#menu-toggle-checkbox:checked ~ .center-main-menu {
+				display: block !important;
+			}
+			
+			/* Stack mobile menu items */
+			.pmenu {
+				display: flex !important;
+				flex-direction: column !important;
+				align-items: center !important;
+				padding: 15px 0 !important;
+				float: none !important;
+				margin: 0 !important;
+			}
+			.pmenu li {
+				display: block !important;
+				margin: 8px 0 !important;
+				float: none !important;
+			}
+			.pmenu li a {
+				padding: 8px 20px !important;
+				font-size: 15px !important;
+			}
+		}
+	</style>
+</head>
+
+<body class="page-template-default page">
+
+	<div class="side-nav">
+		<a href="../index.html">Home</a><a href="../about/index.html">About</a><a href="../https-the-urban-journal-com-latest-blogs/index.html">Blogs</a><a href="../events/index.html">Events</a>
+	</div>
+
+	<div id="page" class="site">
+
+		<header id="masthead" class="sheader site-header clearfix">
+			<div class="content-wrap">
+				<div class="site-branding" style="display: flex; align-items: center; justify-content: space-between; text-align: left; gap: 20px; width: 100%;">
+					<div style="display: flex; align-items: center; gap: 20px;">
+						<a href="../index.html" class="branding-logo-link" style="display: inline-block; flex-shrink: 0;">
+							<img src="../wp-content/uploads/2025/07/cropped-cropped-final_logo_TUJ-removebg-preview-300x300.png" alt="The Urban Journal Logo" style="width: 80px; height: 80px; max-height: 80px; object-fit: contain; display: block;" />
+						</a>
+						<div class="branding-text">
+							<p class="site-title" style="font-family: 'Times New Roman', Times, serif; font-size: 36px; margin: 0; font-weight: bold; line-height: 1.2;">
+								<a href="../index.html" rel="home" style="text-decoration: none; color: #000;">The Urban Journal</a>
+							</p>
+							<p class="site-description" style="margin: 5px 0 0 0; font-size: 15px; color: #666;">Politics, Psyche and Personal Truth</p>
+						</div>
+					</div>
+					<div class="header-social-links" style="display: flex; align-items: center; gap: 20px; flex-shrink: 0;">
+						<a href="https://x.com/JournalThe40534" target="_blank" rel="noopener noreferrer" class="social-link-x" title="X (Twitter)" style="color: #444; padding: 6px; text-decoration: none; transition: all 0.2s ease; display: inline-block;">
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="display: block;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+						</a>
+						<a href="https://www.instagram.com/theurbanjournall?igsh=MXY2ZmZiNmt2ZmNkZQ==" target="_blank" rel="noopener noreferrer" class="social-link-instagram" title="Instagram" style="color: #444; padding: 6px; text-decoration: none; transition: all 0.2s ease; display: inline-block;">
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+						</a>
+						<a href="https://in.linkedin.com/company/the-urban-journall" target="_blank" rel="noopener noreferrer" class="social-link-linkedin" title="LinkedIn" style="color: #444; padding: 6px; text-decoration: none; transition: all 0.2s ease; display: inline-block;">
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<nav id="primary-site-navigation" class="primary-menu main-navigation clearfix">
+				<div class="content-wrap text-center">
+					<input type="checkbox" id="menu-toggle-checkbox" style="display: none;">
+					<label for="menu-toggle-checkbox" class="menu-toggle-label" style="display: none;">
+						<span>☰ Menu</span>
+					</label>
+					
+					<div class="center-main-menu">
+						<ul id="primary-menu" class="pmenu">
+							<li class="menu-item "><a href="../index.html">Home</a></li><li class="menu-item "><a href="../about/index.html">About</a></li><li class="menu-item "><a href="../https-the-urban-journal-com-latest-blogs/index.html">Blogs</a></li><li class="menu-item "><a href="../events/index.html">Events</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</header>
+
+		<div id="content" class="site-content clearfix">
+			<div class="content-wrap">
+
+            <header class="page-header text-center" style="margin-bottom: 50px; text-align: center;">
+                <h1 class="page-title" style="font-family: 'Times New Roman', Times, serif; font-size: 42px; font-weight: bold; margin-bottom: 15px; color: #111;">The Blog Library</h1>
+            </header>
+
+            <div id="primary" class="content-area" style="width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 15px;">
+                <main id="main" class="site-main">
+                    <div class="uagb-post-grid uagb-post__items uagb-post__columns-3 is-grid uagb-post__image-position-top">
+        <article class="post-3003 post type-post status-publish format-standard hentry">
+            <div class="uagb-post__inner-wrap">
+                
+            <div class="uagb-post__image">
+                <a href="../your-exhaustion-has-a-business-model/index.html" class="uagb-image-ratio-2-3">
+                    <img src="../wp-content/uploads/2026/03/WhatsApp-Image-2026-03-20-at-9.56.39-PM.jpeg" alt="Your Exhaustion Has a Business Model" loading="lazy" />
+                </a>
+            </div>
+            
+                <div class="uagb-post__text">
+                    <h3 class="uagb-post__title">
+                        <a href="../your-exhaustion-has-a-business-model/index.html">Your Exhaustion Has a Business Model</a>
+                    </h3>
+                    <div class="uagb-post-grid-byline">
+                        <span class="uagb-post__author">by <a href="../about/index.html">Shivani</a></span>
+                        <span class="uagb-post__date">· March 20, 2026</span>
+                    </div>
+                    <div class="uagb-post__excerpt">
+                        <p><!-- wp:paragraph -->
+There is something quietly unsettling about losing the ability to read.
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+Not books. Just articles. Twel...</p>
+                    </div>
+                    <div class="uagb-post__cta">
+                        <a class="uagb-post__cta-link" href="../your-exhaustion-has-a-business-model/index.html">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+        
+        <article class="post-2980 post type-post status-publish format-standard hentry">
+            <div class="uagb-post__inner-wrap">
+                
+            <div class="uagb-post__image">
+                <a href="../when-air-becomes-a-crisis-living-through-delhis-pollution-pandemic/index.html" class="uagb-image-ratio-2-3">
+                    <img src="../wp-content/uploads/2025/11/WhatsApp-Image-2025-11-25-at-1.15.18-PM.jpeg" alt="When Air Becomes a Crisis: Living Through Delhi's Pollution Pandemic" loading="lazy" />
+                </a>
+            </div>
+            
+                <div class="uagb-post__text">
+                    <h3 class="uagb-post__title">
+                        <a href="../when-air-becomes-a-crisis-living-through-delhis-pollution-pandemic/index.html">When Air Becomes a Crisis: Living Through Delhi's Pollution Pandemic</a>
+                    </h3>
+                    <div class="uagb-post-grid-byline">
+                        <span class="uagb-post__author">by <a href="../about/index.html">Shivani</a></span>
+                        <span class="uagb-post__date">· November 25, 2025</span>
+                    </div>
+                    <div class="uagb-post__excerpt">
+                        <p><!-- wp:paragraph -->
+My eyes are burning as I write this, not from tears, not from screen glare, from the air I have no choice but to breathe. My throat, once used to deliverin...</p>
+                    </div>
+                    <div class="uagb-post__cta">
+                        <a class="uagb-post__cta-link" href="../when-air-becomes-a-crisis-living-through-delhis-pollution-pandemic/index.html">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+        
+        <article class="post-2969 post type-post status-publish format-standard hentry">
+            <div class="uagb-post__inner-wrap">
+                
+            <div class="uagb-post__image">
+                <a href="../when-healing-becomes-hustle-the-lie-of-modern-self-help/index.html" class="uagb-image-ratio-2-3">
+                    <img src="../wp-content/uploads/2025/10/WhatsApp-Image-2025-10-12-at-10.58.10-PM-e1764837758824.jpeg" alt="When Healing Becomes Hustle: The Lie of Modern Self-Help" loading="lazy" />
+                </a>
+            </div>
+            
+                <div class="uagb-post__text">
+                    <h3 class="uagb-post__title">
+                        <a href="../when-healing-becomes-hustle-the-lie-of-modern-self-help/index.html">When Healing Becomes Hustle: The Lie of Modern Self-Help</a>
+                    </h3>
+                    <div class="uagb-post-grid-byline">
+                        <span class="uagb-post__author">by <a href="../about/index.html">Shivani</a></span>
+                        <span class="uagb-post__date">· October 12, 2025</span>
+                    </div>
+                    <div class="uagb-post__excerpt">
+                        <p><!-- wp:paragraph -->
+We’ve All Been There Once
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+ Sitting alone after a long day, scrolling past a perfectly timed quote on y...</p>
+                    </div>
+                    <div class="uagb-post__cta">
+                        <a class="uagb-post__cta-link" href="../when-healing-becomes-hustle-the-lie-of-modern-self-help/index.html">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+        
+        <article class="post-2772 post type-post status-publish format-standard hentry">
+            <div class="uagb-post__inner-wrap">
+                
+            <div class="uagb-post__image">
+                <a href="../the-city-that-failed-geography-gurugram/index.html" class="uagb-image-ratio-2-3">
+                    <img src="../wp-content/uploads/2025/09/traffic.jpg" alt="The City That Failed Geography: Gurugram" loading="lazy" />
+                </a>
+            </div>
+            
+                <div class="uagb-post__text">
+                    <h3 class="uagb-post__title">
+                        <a href="../the-city-that-failed-geography-gurugram/index.html">The City That Failed Geography: Gurugram</a>
+                    </h3>
+                    <div class="uagb-post-grid-byline">
+                        <span class="uagb-post__author">by <a href="../about/index.html">Shivani</a></span>
+                        <span class="uagb-post__date">· September 03, 2025</span>
+                    </div>
+                    <div class="uagb-post__excerpt">
+                        <p><!-- wp:paragraph -->
+
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+It is a familiar sight every year. A heavy downpour in Gurugram, and within minutes, MG Road looks li...</p>
+                    </div>
+                    <div class="uagb-post__cta">
+                        <a class="uagb-post__cta-link" href="../the-city-that-failed-geography-gurugram/index.html">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+        
+        <article class="post-2763 post type-post status-publish format-standard hentry">
+            <div class="uagb-post__inner-wrap">
+                
+            <div class="uagb-post__image">
+                <a href="../nostalgias-gentle-lie-why-yesterday-seems-better/index.html" class="uagb-image-ratio-2-3">
+                    <img src="../wp-content/uploads/2025/08/school-bus.jpg" alt="Nostalgia's Gentle Lie: Why Yesterday Seems Better" loading="lazy" />
+                </a>
+            </div>
+            
+                <div class="uagb-post__text">
+                    <h3 class="uagb-post__title">
+                        <a href="../nostalgias-gentle-lie-why-yesterday-seems-better/index.html">Nostalgia's Gentle Lie: Why Yesterday Seems Better</a>
+                    </h3>
+                    <div class="uagb-post-grid-byline">
+                        <span class="uagb-post__author">by <a href="../about/index.html">Shivani</a></span>
+                        <span class="uagb-post__date">· August 19, 2025</span>
+                    </div>
+                    <div class="uagb-post__excerpt">
+                        <p><!-- wp:paragraph -->
+
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+On calm Sunday evenings "the good old days" don’t knock softly, they barge in. A song from the early ...</p>
+                    </div>
+                    <div class="uagb-post__cta">
+                        <a class="uagb-post__cta-link" href="../nostalgias-gentle-lie-why-yesterday-seems-better/index.html">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+        
+        <article class="post-2755 post type-post status-publish format-standard hentry">
+            <div class="uagb-post__inner-wrap">
+                
+            <div class="uagb-post__image">
+                <a href="../the-death-of-indian-citizenry-how-silence-is-killing-democracy/index.html" class="uagb-image-ratio-2-3">
+                    <img src="../wp-content/uploads/2025/08/rahul-gandhi-1.jpg" alt="The Death  of Indian Citizenry: How Silence is Killing Democracy" loading="lazy" />
+                </a>
+            </div>
+            
+                <div class="uagb-post__text">
+                    <h3 class="uagb-post__title">
+                        <a href="../the-death-of-indian-citizenry-how-silence-is-killing-democracy/index.html">The Death  of Indian Citizenry: How Silence is Killing Democracy</a>
+                    </h3>
+                    <div class="uagb-post-grid-byline">
+                        <span class="uagb-post__author">by <a href="../about/index.html">Shivani</a></span>
+                        <span class="uagb-post__date">· August 10, 2025</span>
+                    </div>
+                    <div class="uagb-post__excerpt">
+                        <p><!-- wp:paragraph -->
+
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+History often remembers the death of democracies as grand events—coups, revolutions, or the swift ris...</p>
+                    </div>
+                    <div class="uagb-post__cta">
+                        <a class="uagb-post__cta-link" href="../the-death-of-indian-citizenry-how-silence-is-killing-democracy/index.html">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+        
+        <article class="post-2654 post type-post status-publish format-standard hentry">
+            <div class="uagb-post__inner-wrap">
+                
+            <div class="uagb-post__image">
+                <a href="../the-saviour-complex-why-women-want-to-be-rescued/index.html" class="uagb-image-ratio-2-3">
+                    <img src="../wp-content/uploads/2025/07/image-light.jpg" alt="The Saviour Complex: Why Women Want to Be Rescued" loading="lazy" />
+                </a>
+            </div>
+            
+                <div class="uagb-post__text">
+                    <h3 class="uagb-post__title">
+                        <a href="../the-saviour-complex-why-women-want-to-be-rescued/index.html">The Saviour Complex: Why Women Want to Be Rescued</a>
+                    </h3>
+                    <div class="uagb-post-grid-byline">
+                        <span class="uagb-post__author">by <a href="../about/index.html">Shivani</a></span>
+                        <span class="uagb-post__date">· July 24, 2025</span>
+                    </div>
+                    <div class="uagb-post__excerpt">
+                        <p><!-- wp:paragraph -->
+
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+There comes a moment in many lives, especially in a woman, when clarity doesn’t arrive softly, like d...</p>
+                    </div>
+                    <div class="uagb-post__cta">
+                        <a class="uagb-post__cta-link" href="../the-saviour-complex-why-women-want-to-be-rescued/index.html">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+        
+        <article class="post-2619 post type-post status-publish format-standard hentry">
+            <div class="uagb-post__inner-wrap">
+                
+            <div class="uagb-post__image">
+                <a href="../campus-mothers-at-iit-reinforcement-of-patriarchy/index.html" class="uagb-image-ratio-2-3">
+                    <img src="../wp-content/uploads/2025/07/IIT-blog.jpg" alt="Campus Mothers at IIT: Reinforcement of Patriarchy" loading="lazy" />
+                </a>
+            </div>
+            
+                <div class="uagb-post__text">
+                    <h3 class="uagb-post__title">
+                        <a href="../campus-mothers-at-iit-reinforcement-of-patriarchy/index.html">Campus Mothers at IIT: Reinforcement of Patriarchy</a>
+                    </h3>
+                    <div class="uagb-post-grid-byline">
+                        <span class="uagb-post__author">by <a href="../about/index.html">Shivani</a></span>
+                        <span class="uagb-post__date">· July 16, 2025</span>
+                    </div>
+                    <div class="uagb-post__excerpt">
+                        <p><!-- wp:paragraph -->
+
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<strong>India’s Premier Institutions Are Not Immune to Misogyny</strong>
+<!-- /wp:paragraph -->
+
+...</p>
+                    </div>
+                    <div class="uagb-post__cta">
+                        <a class="uagb-post__cta-link" href="../campus-mothers-at-iit-reinforcement-of-patriarchy/index.html">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+        
+        <article class="post-2556 post type-post status-publish format-standard hentry">
+            <div class="uagb-post__inner-wrap">
+                
+            <div class="uagb-post__image">
+                <a href="../the-rise-and-fall-of-indian-electronic-media/index.html" class="uagb-image-ratio-2-3">
+                    <img src="../wp-content/uploads/2025/07/sensationalism.jpg" alt="The Fall of Indian Electronic Media" loading="lazy" />
+                </a>
+            </div>
+            
+                <div class="uagb-post__text">
+                    <h3 class="uagb-post__title">
+                        <a href="../the-rise-and-fall-of-indian-electronic-media/index.html">The Fall of Indian Electronic Media</a>
+                    </h3>
+                    <div class="uagb-post-grid-byline">
+                        <span class="uagb-post__author">by <a href="../about/index.html">Shivani</a></span>
+                        <span class="uagb-post__date">· July 08, 2025</span>
+                    </div>
+                    <div class="uagb-post__excerpt">
+                        <p><!-- wp:paragraph -->
+
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+&nbsp;The media often, hailed as the fourth pillar of democracy has been crucial in forming contempor...</p>
+                    </div>
+                    <div class="uagb-post__cta">
+                        <a class="uagb-post__cta-link" href="../the-rise-and-fall-of-indian-electronic-media/index.html">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+        
+        <article class="post-2410 post type-post status-publish format-standard hentry">
+            <div class="uagb-post__inner-wrap">
+                
+            <div class="uagb-post__image">
+                <a href="../grace-is-quite/index.html" class="uagb-image-ratio-2-3">
+                    <img src="../wp-content/uploads/2025/06/grace-blog.jpg" alt="When Grace Spoke Louder Than Pain" loading="lazy" />
+                </a>
+            </div>
+            
+                <div class="uagb-post__text">
+                    <h3 class="uagb-post__title">
+                        <a href="../grace-is-quite/index.html">When Grace Spoke Louder Than Pain</a>
+                    </h3>
+                    <div class="uagb-post-grid-byline">
+                        <span class="uagb-post__author">by <a href="../about/index.html">Shivani</a></span>
+                        <span class="uagb-post__date">· June 30, 2025</span>
+                    </div>
+                    <div class="uagb-post__excerpt">
+                        <p><!-- wp:paragraph -->
+
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+There are moments in life that arrive quietly, almost unnoticed, but they change something within you...</p>
+                    </div>
+                    <div class="uagb-post__cta">
+                        <a class="uagb-post__cta-link" href="../grace-is-quite/index.html">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+        
+        <article class="post-740 post type-post status-publish format-standard hentry">
+            <div class="uagb-post__inner-wrap">
+                
+            <div class="uagb-post__image">
+                <a href="../the-zombies-of-urban-jungle/index.html" class="uagb-image-ratio-2-3">
+                    <img src="../wp-content/uploads/2025/06/zombie.jpg" alt="The Zombies Of Urban Jungles" loading="lazy" />
+                </a>
+            </div>
+            
+                <div class="uagb-post__text">
+                    <h3 class="uagb-post__title">
+                        <a href="../the-zombies-of-urban-jungle/index.html">The Zombies Of Urban Jungles</a>
+                    </h3>
+                    <div class="uagb-post-grid-byline">
+                        <span class="uagb-post__author">by <a href="../about/index.html">Shivani</a></span>
+                        <span class="uagb-post__date">· June 21, 2025</span>
+                    </div>
+                    <div class="uagb-post__excerpt">
+                        <p><!-- wp:paragraph -->
+Are we dead within? Are we even social animals anymore?
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+Why is no one interested in conversations wher...</p>
+                    </div>
+                    <div class="uagb-post__cta">
+                        <a class="uagb-post__cta-link" href="../the-zombies-of-urban-jungle/index.html">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+        
+        <article class="post-914 post type-post status-publish format-standard hentry">
+            <div class="uagb-post__inner-wrap">
+                
+            <div class="uagb-post__image">
+                <a href="../the-great-american-circus/index.html" class="uagb-image-ratio-2-3">
+                    <img src="../wp-content/uploads/2025/06/musk-and-D.jpg" alt="The Great American Circus" loading="lazy" />
+                </a>
+            </div>
+            
+                <div class="uagb-post__text">
+                    <h3 class="uagb-post__title">
+                        <a href="../the-great-american-circus/index.html">The Great American Circus</a>
+                    </h3>
+                    <div class="uagb-post-grid-byline">
+                        <span class="uagb-post__author">by <a href="../about/index.html">Shivani</a></span>
+                        <span class="uagb-post__date">· June 21, 2025</span>
+                    </div>
+                    <div class="uagb-post__excerpt">
+                        <p><!-- wp:paragraph -->
+In a country where politics and performance increasingly blur, the recent public spat between Elon Musk and Donald Trump on X (formerly Twitter) reads less...</p>
+                    </div>
+                    <div class="uagb-post__cta">
+                        <a class="uagb-post__cta-link" href="../the-great-american-circus/index.html">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+        
+        <article class="post-736 post type-post status-publish format-standard hentry">
+            <div class="uagb-post__inner-wrap">
+                
+            <div class="uagb-post__image">
+                <a href="../scars-dont-fade/index.html" class="uagb-image-ratio-2-3">
+                    <img src="../wp-content/uploads/2025/06/candle-.jpg" alt="Scars don't Fade" loading="lazy" />
+                </a>
+            </div>
+            
+                <div class="uagb-post__text">
+                    <h3 class="uagb-post__title">
+                        <a href="../scars-dont-fade/index.html">Scars don't Fade</a>
+                    </h3>
+                    <div class="uagb-post-grid-byline">
+                        <span class="uagb-post__author">by <a href="../about/index.html">Shivani</a></span>
+                        <span class="uagb-post__date">· June 21, 2025</span>
+                    </div>
+                    <div class="uagb-post__excerpt">
+                        <p><!-- wp:paragraph -->
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp...</p>
+                    </div>
+                    <div class="uagb-post__cta">
+                        <a class="uagb-post__cta-link" href="../scars-dont-fade/index.html">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+        
+        <article class="post-737 post type-post status-publish format-standard hentry">
+            <div class="uagb-post__inner-wrap">
+                
+            <div class="uagb-post__image">
+                <a href="../roots-of-our-relationships/index.html" class="uagb-image-ratio-2-3">
+                    <img src="../wp-content/uploads/2025/06/relationship-blog.jpg.1.jpg" alt="Roots of Our Relationships" loading="lazy" />
+                </a>
+            </div>
+            
+                <div class="uagb-post__text">
+                    <h3 class="uagb-post__title">
+                        <a href="../roots-of-our-relationships/index.html">Roots of Our Relationships</a>
+                    </h3>
+                    <div class="uagb-post-grid-byline">
+                        <span class="uagb-post__author">by <a href="../about/index.html">Shivani</a></span>
+                        <span class="uagb-post__date">· June 21, 2025</span>
+                    </div>
+                    <div class="uagb-post__excerpt">
+                        <p><!-- wp:paragraph -->
+Love isn’t always poetry and long walks at sunset. Sometimes, it’s unread texts, awkward silences, overthinking, and an ache you can’t quite name. We wonde...</p>
+                    </div>
+                    <div class="uagb-post__cta">
+                        <a class="uagb-post__cta-link" href="../roots-of-our-relationships/index.html">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+        
+        <article class="post-738 post type-post status-publish format-standard hentry">
+            <div class="uagb-post__inner-wrap">
+                
+            <div class="uagb-post__image">
+                <a href="../air-indias-free-fall/index.html" class="uagb-image-ratio-2-3">
+                    <img src="../wp-content/uploads/2025/06/Airplane-e1757507546811.jpg" alt="Air India's Free Fall: A Betrayal by Bureaucracy" loading="lazy" />
+                </a>
+            </div>
+            
+                <div class="uagb-post__text">
+                    <h3 class="uagb-post__title">
+                        <a href="../air-indias-free-fall/index.html">Air India's Free Fall: A Betrayal by Bureaucracy</a>
+                    </h3>
+                    <div class="uagb-post-grid-byline">
+                        <span class="uagb-post__author">by <a href="../about/index.html">Shivani</a></span>
+                        <span class="uagb-post__date">· June 21, 2025</span>
+                    </div>
+                    <div class="uagb-post__excerpt">
+                        <p><!-- wp:paragraph -->
+Once celebrated as the jewel of Indian aviation, Air India today stands as a cautionary tale of bureaucratic decay, corporate negligence and Institutional ...</p>
+                    </div>
+                    <div class="uagb-post__cta">
+                        <a class="uagb-post__cta-link" href="../air-indias-free-fall/index.html">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+        
+        <article class="post-739 post type-post status-publish format-standard hentry">
+            <div class="uagb-post__inner-wrap">
+                
+            <div class="uagb-post__image">
+                <a href="../the-februarys-memento/index.html" class="uagb-image-ratio-2-3">
+                    <img src="../wp-content/uploads/2025/07/feb-memento.jpg" alt="February's Memento" loading="lazy" />
+                </a>
+            </div>
+            
+                <div class="uagb-post__text">
+                    <h3 class="uagb-post__title">
+                        <a href="../the-februarys-memento/index.html">February's Memento</a>
+                    </h3>
+                    <div class="uagb-post-grid-byline">
+                        <span class="uagb-post__author">by <a href="../about/index.html">Shivani</a></span>
+                        <span class="uagb-post__date">· June 21, 2025</span>
+                    </div>
+                    <div class="uagb-post__excerpt">
+                        <p><!-- wp:paragraph -->
+Tumultously lost it all on a random afternoon in February, and all of a sudden, I could't hear my name anywhere in the house. Nobody's catching a glimpse o...</p>
+                    </div>
+                    <div class="uagb-post__cta">
+                        <a class="uagb-post__cta-link" href="../the-februarys-memento/index.html">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+        
+        <article class="post-255 post type-post status-publish format-standard hentry">
+            <div class="uagb-post__inner-wrap">
+                
+            <div class="uagb-post__image">
+                <a href="../faith-fire-blood-and-jerusalem/index.html" class="uagb-image-ratio-2-3">
+                    <img src="../wp-content/uploads/2025/06/temple-mount-2.jpg" alt="Faith, Fire, Blood and Jerusalem" loading="lazy" />
+                </a>
+            </div>
+            
+                <div class="uagb-post__text">
+                    <h3 class="uagb-post__title">
+                        <a href="../faith-fire-blood-and-jerusalem/index.html">Faith, Fire, Blood and Jerusalem</a>
+                    </h3>
+                    <div class="uagb-post-grid-byline">
+                        <span class="uagb-post__author">by <a href="../about/index.html">Shivani</a></span>
+                        <span class="uagb-post__date">· June 21, 2025</span>
+                    </div>
+                    <div class="uagb-post__excerpt">
+                        <p><!-- wp:paragraph -->
+Jerusalem, perched on a limestone plateau in the Judean Mountains, is more than a city. It is sacred, symbolic and soaked in centuries of faith and blood. ...</p>
+                    </div>
+                    <div class="uagb-post__cta">
+                        <a class="uagb-post__cta-link" href="../faith-fire-blood-and-jerusalem/index.html">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+        </div>
+                </main>
+            </div>
+            
+			</div>
+		</div><!-- #content -->
+
+		<footer id="colophon" class="site-footer clearfix">
+			<div class="content-wrap">
+				<div class="footer-column-wrapper">
+					<div class="footer-column-three footer-column-left">
+						<div class="widget widget_media_image">
+							<a href="../index.html">
+								<img src="../wp-content/uploads/2025/07/cropped-cropped-final_logo_TUJ-removebg-preview-300x300.png" alt="logo of the urban journal" width="136" height="136" class="image wp-image-2526 attachment-full size-full" style="max-width: 100%; height: auto;" />
+							</a>
+						</div>
+						<div class="widget widget_block">
+							<p><strong><a href="../index.html" style="color: inherit;">The Urban Journal</a></strong> is your space for bold perspectives on politics, deep dives into human psychology, and raw reflections on personal truth. Thought-provoking blogs that question, connect, and challenge.</p>
+						</div>
+						<div class="widget widget_block" style="margin-top: 15px;">
+							<div class="footer-social-links" style="display: flex; align-items: center; gap: 20px; margin-top: 10px;">
+								<a href="https://x.com/JournalThe40534" target="_blank" rel="noopener noreferrer" class="social-link-x" title="X (Twitter)" style="color: #bbb; padding: 6px; text-decoration: none; transition: all 0.2s ease; display: inline-block;">
+									<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="display: block;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+								</a>
+								<a href="https://www.instagram.com/theurbanjournall?igsh=MXY2ZmZiNmt2ZmNkZQ==" target="_blank" rel="noopener noreferrer" class="social-link-instagram" title="Instagram" style="color: #bbb; padding: 6px; text-decoration: none; transition: all 0.2s ease; display: inline-block;">
+									<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+								</a>
+								<a href="https://in.linkedin.com/company/the-urban-journall" target="_blank" rel="noopener noreferrer" class="social-link-linkedin" title="LinkedIn" style="color: #bbb; padding: 6px; text-decoration: none; transition: all 0.2s ease; display: inline-block;">
+									<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+								</a>
+							</div>
+						</div>
+					</div>
+					
+					<div class="footer-column-three footer-column-middle">
+						<div class="widget widget_categories">
+							<h2 class="widgettitle">Categories</h2>
+							<ul>
+								<li class="cat-item"><a href="../category/politics/index.html">Politics</a></li><li class="cat-item"><a href="../category/psychology/index.html">Psychology</a></li><li class="cat-item"><a href="../category/personal-truth/index.html">Personal truth</a></li>
+							</ul>
+						</div>
+					</div>
+					
+					<div class="footer-column-three footer-column-right">
+						<!-- Empty Column -->
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div><!-- #page -->
+</body>
+</html>
