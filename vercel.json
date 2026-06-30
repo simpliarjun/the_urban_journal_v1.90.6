@@ -50,8 +50,28 @@
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
+      "src": "/api/admin_create_post",
+      "dest": "/api/admin_create_post.py"
+    },
+    {
+      "src": "/api/admin_approve",
+      "dest": "/api/admin_approve.py"
+    },
+    {
+      "src": "/api/admin_reject",
+      "dest": "/api/admin_reject.py"
+    },
+    {
+      "src": "/api/submit_comment",
+      "dest": "/api/submit_comment.py"
+    },
+    {
+      "src": "/api/verify_comment",
+      "dest": "/api/verify_comment.py"
+    },
+    {
+      "src": "/api/admin",
+      "dest": "/api/admin.py"
     },
     {
       "src": "/$",
