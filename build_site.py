@@ -3,6 +3,7 @@ import os
 import re
 import glob
 import datetime
+import json
 
 # Paths
 db_path = "/Users/arjungupta/.gemini/antigravity-ide/brain/06024764-27c8-47f9-83ce-3f38b4c267d4/scratch/backup.db"
@@ -81,6 +82,49 @@ for row in cursor.fetchall():
         "tags": p_tags,
         "thumbnail": post_thumbs.get(pid)
     })
+
+# --- Load additional posts from posts/*.json (created via the hosted admin panel) ---
+posts_json_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "posts")
+if os.path.isdir(posts_json_dir):
+    for fname in sorted(os.listdir(posts_json_dir)):
+        if not fname.endswith(".json"):
+            continue
+        fpath = os.path.join(posts_json_dir, fname)
+        try:
+            with open(fpath, "r", encoding="utf-8") as f:
+                jp = json.load(f)
+
+            jp_categories = [
+                {"name": c.get("name", ""), "slug": c.get("slug", ""), "taxonomy": "category"}
+                for c in jp.get("categories", [])
+            ]
+            jp_tags = [
+                {"name": t.get("name", ""), "slug": t.get("slug", ""), "taxonomy": "post_tag"}
+                for t in jp.get("tags", [])
+            ]
+
+            posts.append({
+                "id": f"json-{jp.get('slug')}",
+                "title": jp.get("title", ""),
+                "slug": jp.get("slug", ""),
+                "content": rewrite_urls(jp.get("content", "")),
+                "date": jp.get("date", ""),
+                "excerpt": jp.get("excerpt", ""),
+                "categories": jp_categories,
+                "tags": jp_tags,
+                "thumbnail": jp.get("thumbnail")
+            })
+        except Exception as e:
+            print(f"Error loading JSON post {fname}: {e}")
+
+# Re-sort combined posts (SQLite + JSON) by date descending, newest first
+def _post_sort_key(p):
+    try:
+        return datetime.datetime.strptime(p["date"], "%Y-%m-%d %H:%M:%S")
+    except Exception:
+        return datetime.datetime.min
+
+posts.sort(key=_post_sort_key, reverse=True)
 
 # Fetch recent comments
 cursor.execute("SELECT COUNT(*) FROM sqlite_master WHERE type='table' AND name='wp_comments'")
