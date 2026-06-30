@@ -429,7 +429,90 @@
 
         function handleCreatePost(event) {
             event.preventDefault();
-            alert("Blog post creation is best done locally with 'python3 admin_panel.py'. This ensures images are properly uploaded and the site is regenerated.");
+
+            const form = event.target;
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.textContent;
+
+            const title = form.querySelector('[name="title"]').value.trim();
+            const content = form.querySelector('[name="content"]').value.trim();
+            const tagsRaw = form.querySelector('[name="tags"]').value.trim();
+            const imageInput = form.querySelector('[name="image"]');
+
+            const categoryMap = {
+                category_3: 'Politics',
+                category_4: 'Psychology',
+                category_5: 'Personal Truth'
+            };
+            const categories = Object.keys(categoryMap)
+                .filter(key => form.querySelector(`[name="${key}"]`).checked)
+                .map(key => {
+                    const name = categoryMap[key];
+                    const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+                    return { name, slug };
+                });
+
+            const tags = tagsRaw
+                ? tagsRaw.split(',').map(t => t.trim()).filter(Boolean).map(name => {
+                    const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+                    return { name, slug };
+                })
+                : [];
+
+            if (!title || !content) {
+                alert("Title and content are required.");
+                return false;
+            }
+
+            function submitPost(imageBase64, imageFilename) {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Publishing...';
+
+                fetch('/api/admin_create_post', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        title,
+                        content,
+                        categories,
+                        tags,
+                        image_base64: imageBase64,
+                        image_filename: imageFilename
+                    })
+                })
+                .then(res => res.json())
+                .then(res => {
+                    if (res.success) {
+                        alert("Post published successfully! It will appear on the site after the next site rebuild (usually within a minute).");
+                        form.reset();
+                    } else {
+                        alert("Error: " + res.message);
+                    }
+                })
+                .catch(err => {
+                    alert("Error publishing post: " + err.message);
+                })
+                .finally(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalBtnText;
+                });
+            }
+
+            if (imageInput.files && imageInput.files[0]) {
+                const file = imageInput.files[0];
+                const reader = new FileReader();
+                reader.onload = () => {
+                    const base64Data = reader.result.split(',')[1];
+                    submitPost(base64Data, file.name);
+                };
+                reader.onerror = () => {
+                    alert("Failed to read the selected image file.");
+                };
+                reader.readAsDataURL(file);
+            } else {
+                submitPost(null, null);
+            }
+
             return false;
         }
         

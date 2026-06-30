@@ -1,17 +1,69 @@
 {
   "version": 2,
   "builds": [
-    { "src": "api/admin.py", "use": "@vercel/python", "config": { "includeFiles": "api/**" } },
-    { "src": "api/admin_approve.py", "use": "@vercel/python", "config": { "includeFiles": "api/**" } },
-    { "src": "api/admin_reject.py", "use": "@vercel/python", "config": { "includeFiles": "api/**" } },
-    { "src": "api/submit_comment.py", "use": "@vercel/python", "config": { "includeFiles": "api/**" } },
-    { "src": "api/verify_comment.py", "use": "@vercel/python", "config": { "includeFiles": "api/**" } },
-    { "src": "public/admin/**", "use": "@vercel/static" }
+    {
+      "src": "api/admin.py",
+      "use": "@vercel/python",
+      "config": {
+        "includeFiles": "api/**"
+      }
+    },
+    {
+      "src": "api/admin_approve.py",
+      "use": "@vercel/python",
+      "config": {
+        "includeFiles": "api/**"
+      }
+    },
+    {
+      "src": "api/admin_reject.py",
+      "use": "@vercel/python",
+      "config": {
+        "includeFiles": "api/**"
+      }
+    },
+    {
+      "src": "api/submit_comment.py",
+      "use": "@vercel/python",
+      "config": {
+        "includeFiles": "api/**"
+      }
+    },
+    {
+      "src": "api/verify_comment.py",
+      "use": "@vercel/python",
+      "config": {
+        "includeFiles": "api/**"
+      }
+    },
+    {
+      "src": "api/admin_create_post.py",
+      "use": "@vercel/python",
+      "config": {
+        "includeFiles": "api/**"
+      }
+    },
+    {
+      "src": "public/admin/**",
+      "use": "@vercel/static"
+    }
   ],
   "routes": [
-    { "src": "/api/(.*)", "dest": "/api/$1" },
-    { "src": "/$", "dest": "/public/admin/index.html" },
-    { "src": "/admin", "dest": "/public/admin/index.html" },
-    { "src": "/(.*)", "dest": "/public/admin/index.html" }
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    },
+    {
+      "src": "/$",
+      "dest": "/public/admin/index.html"
+    },
+    {
+      "src": "/admin",
+      "dest": "/public/admin/index.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/public/admin/index.html"
+    }
   ]
 }
