@@ -9,43 +9,43 @@
 .agents
 .gemini
 .DS_Store
-extracted/
+/extracted/
 
 # Root-level directories that are NOT part of the Vercel deployment
 # (the static site lives in public/, not at root)
-about/
-air-indias-free-fall/
-campus-mothers-at-iit-reinforcement-of-patriarchy/
-category/
-date/
-events/
-faith-fire-blood-and-jerusalem/
-grace-is-quite/
-https-the-urban-journal-com-latest-blogs/
-latest-blogs/
-nostalgias-gentle-lie-why-yesterday-seems-better/
-pending_comments/
-privacy-policy/
-roots-of-our-relationships/
-scars-dont-fade/
-tag/
-the-city-that-failed-geography-gurugram/
-the-death-of-indian-citizenry-how-silence-is-killing-democracy/
-the-februarys-memento/
-the-great-american-circus/
-the-rise-and-fall-of-indian-electronic-media/
-the-saviour-complex-why-women-want-to-be-rescued/
-the-zombies-of-urban-jungle/
-when-air-becomes-a-crisis-living-through-delhis-pollution-pandemic/
-when-healing-becomes-hustle-the-lie-of-modern-self-help/
-wp-content/
-wp-includes/
-your-exhaustion-has-a-business-model/
-approved_comments/
+/about/
+/air-indias-free-fall/
+/campus-mothers-at-iit-reinforcement-of-patriarchy/
+/category/
+/date/
+/events/
+/faith-fire-blood-and-jerusalem/
+/grace-is-quite/
+/https-the-urban-journal-com-latest-blogs/
+/latest-blogs/
+/nostalgias-gentle-lie-why-yesterday-seems-better/
+/pending_comments/
+/privacy-policy/
+/roots-of-our-relationships/
+/scars-dont-fade/
+/tag/
+/the-city-that-failed-geography-gurugram/
+/the-death-of-indian-citizenry-how-silence-is-killing-democracy/
+/the-februarys-memento/
+/the-great-american-circus/
+/the-rise-and-fall-of-indian-electronic-media/
+/the-saviour-complex-why-women-want-to-be-rescued/
+/the-zombies-of-urban-jungle/
+/when-air-becomes-a-crisis-living-through-delhis-pollution-pandemic/
+/when-healing-becomes-hustle-the-lie-of-modern-self-help/
+/wp-content/
+/wp-includes/
+/your-exhaustion-has-a-business-model/
+/approved_comments/
 
 # Root HTML (the real one is in public/)
-index.html
+/index.html
 
 # Python scripts not needed on Vercel
-admin_panel.py
-build_site.py
+/admin_panel.py
+/build_site.py
