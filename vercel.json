@@ -8,5 +8,9 @@
     "api/*.py": {
       "excludeFiles": "public/**"
     }
-  }
+  },
+  "routes": [
+    { "src": "/api/submit_comment", "dest": "/api/submit_comment.py" },
+    { "src": "/api/verify_comment", "dest": "/api/verify_comment.py" }
+  ]
 }
