@@ -748,6 +748,112 @@ for post in posts:
 
     post_content_rel = make_content_links_relative(post["content"], prefix)
 
+    # Fetch approved comments for this post
+    cursor.execute("""
+        SELECT comment_author, comment_content, comment_date
+        FROM wp_comments
+        WHERE comment_post_ID = ? AND comment_approved = 1
+        ORDER BY comment_date ASC
+    """, (post["id"],))
+    comments = cursor.fetchall()
+
+    comments_html = ""
+    if comments:
+        comments_html += '<div class="comments-section fbox" style="margin-top: 30px; padding: 25px; background: #fff; border-radius: 4px; border: 1px solid #eee;">'
+        comments_html += f'<h3 class="comments-title" style="font-family: \'Times New Roman\', Times, serif; font-weight: bold; margin-bottom: 20px; border-bottom: 2px solid #333; padding-bottom: 10px;">Comments ({len(comments)})</h3>'
+        comments_html += '<ul class="comment-list" style="list-style: none; padding: 0; margin: 0;">'
+        for author, content_text, c_date in comments:
+            c_dt = datetime.datetime.strptime(c_date, "%Y-%m-%d %H:%M:%S") if isinstance(c_date, str) and ' ' in c_date else datetime.datetime.now()
+            c_formatted_date = c_dt.strftime("%B %d, %Y at %I:%M %p")
+            comments_html += f"""
+            <li class="comment-item" style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #f0f0f0;">
+                <div class="comment-meta" style="margin-bottom: 8px;">
+                    <strong class="comment-author" style="font-size: 16px; color: #111;">{author}</strong>
+                    <span class="comment-date" style="font-size: 13px; color: #888; margin-left: 10px;">{c_formatted_date}</span>
+                </div>
+                <div class="comment-content" style="font-size: 15px; color: #444; line-height: 1.6; text-align: justify;">
+                    <p style="margin: 0;">{content_text}</p>
+                </div>
+            </li>
+            """
+        comments_html += '</ul></div>'
+
+    comment_form_html = f"""
+    <div class="comment-respond fbox" style="margin-top: 30px; padding: 25px; background: #fff; border-radius: 4px; border: 1px solid #eee;">
+        <h3 class="comment-reply-title" style="font-family: 'Times New Roman', Times, serif; font-weight: bold; margin-bottom: 20px; border-bottom: 2px solid #333; padding-bottom: 10px;">Leave a Comment</h3>
+        <form id="commentform" style="display: flex; flex-direction: column; gap: 15px;">
+            <input type="hidden" name="post_id" value="{post["id"]}">
+            <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 250px;">
+                    <label style="display: block; font-weight: 600; margin-bottom: 5px; font-size: 14px;">Name *</label>
+                    <input type="text" name="author" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 15px;">
+                </div>
+                <div style="flex: 1; min-width: 250px;">
+                    <label style="display: block; font-weight: 600; margin-bottom: 5px; font-size: 14px;">Email (will be verified) *</label>
+                    <input type="email" name="email" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 15px;">
+                </div>
+            </div>
+            <div>
+                <label style="display: block; font-weight: 600; margin-bottom: 5px; font-size: 14px;">Comment *</label>
+                <textarea name="comment" required rows="6" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 15px; resize: vertical;"></textarea>
+            </div>
+            <div id="comment-message" style="display: none; padding: 12px; border-radius: 4px; font-size: 15px; font-weight: 500;"></div>
+            <div>
+                <button type="submit" style="background: #111; color: #fff; border: none; padding: 12px 24px; font-size: 15px; font-weight: bold; border-radius: 4px; cursor: pointer; transition: background 0.2s ease;">Submit Comment</button>
+            </div>
+        </form>
+        <script>
+            document.getElementById('commentform').addEventListener('submit', function(e) {{
+                e.preventDefault();
+                const form = e.target;
+                const button = form.querySelector('button[type="submit"]');
+                const msgDiv = document.getElementById('comment-message');
+                
+                button.disabled = true;
+                button.textContent = 'Sending verification...';
+                msgDiv.style.display = 'none';
+                
+                const data = {{
+                    post_id: form.post_id.value,
+                    author: form.author.value,
+                    email: form.email.value,
+                    comment: form.comment.value
+                }};
+                
+                fetch('/api/submit_comment', {{
+                    method: 'POST',
+                    headers: {{ 'Content-Type': 'application/json' }},
+                    body: JSON.stringify(data)
+                }})
+                .then(res => res.json())
+                .then(res => {{
+                    if (res.success) {{
+                        msgDiv.style.backgroundColor = '#d4edda';
+                        msgDiv.style.color = '#155724';
+                        msgDiv.style.border = '1px solid #c3e6cb';
+                        msgDiv.textContent = 'A verification email has been sent. Please check your inbox and click the link to verify your comment.';
+                        msgDiv.style.display = 'block';
+                        form.reset();
+                    }} else {{
+                        throw new Error(res.message || 'Failed to submit comment.');
+                    }}
+                }})
+                .catch(err => {{
+                    msgDiv.style.backgroundColor = '#f8d7da';
+                    msgDiv.style.color = '#721c24';
+                    msgDiv.style.border = '1px solid #f5c6cb';
+                    msgDiv.textContent = err.message;
+                    msgDiv.style.display = 'block';
+                }})
+                .finally(() => {{
+                    button.disabled = false;
+                    button.textContent = 'Submit Comment';
+                }});
+            }});
+        </script>
+    </div>
+    """
+
     post_body = f"""
 <div id="primary" class="featured-content content-area">
 	<main id="main" class="site-main">
@@ -773,6 +879,8 @@ for post in posts:
 				{tags_html}
 			</div>
 		</article>
+		{comments_html}
+		{comment_form_html}
 	</main>
 </div>
 """
