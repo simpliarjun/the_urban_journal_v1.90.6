@@ -1,12 +1,17 @@
 {
   "version": 2,
   "builds": [
-    { "src": "api/*.py", "use": "@vercel/python" },
-    { "src": "public/**", "use": "@vercel/static" }
+    { "src": "api/admin.py", "use": "@vercel/python" },
+    { "src": "api/admin_approve.py", "use": "@vercel/python" },
+    { "src": "api/admin_reject.py", "use": "@vercel/python" },
+    { "src": "api/submit_comment.py", "use": "@vercel/python" },
+    { "src": "api/verify_comment.py", "use": "@vercel/python" },
+    { "src": "public/admin/**", "use": "@vercel/static" }
   ],
   "routes": [
     { "src": "/api/(.*)", "dest": "/api/$1" },
-    { "src": "/$", "dest": "/public/index.html" },
-    { "src": "/(.*)", "dest": "/public/$1" }
+    { "src": "/$", "dest": "/public/admin/index.html" },
+    { "src": "/admin", "dest": "/public/admin/index.html" },
+    { "src": "/(.*)", "dest": "/public/admin/index.html" }
   ]
 }
