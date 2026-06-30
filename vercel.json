@@ -1,12 +1,11 @@
 {
   "version": 2,
-  "outputDirectory": "public",
-  "functions": {
-    "api/*.py": {
-      "runtime": "@vercel/python@4.6.0"
-    }
-  },
-  "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/$1" }
+  "builds": [
+    { "src": "api/*.py", "use": "@vercel/python" },
+    { "src": "public/**", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/api/$1" },
+    { "src": "/(.*)", "dest": "/public/$1" }
   ]
 }
