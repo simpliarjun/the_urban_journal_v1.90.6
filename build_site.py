@@ -102,6 +102,28 @@ if has_comments_table:
             "date": row[3]
         })
 
+# Load extra comments from approved_comments/approved.json if it exists
+approved_json_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "approved_comments", "approved.json")
+extra_comments_list = []
+if os.path.exists(approved_json_path):
+    try:
+        with open(approved_json_path, "r", encoding="utf-8") as f:
+            extra_comments_list = json.load(f)
+    except Exception as e:
+        print(f"Error reading extra comments for recent widget: {e}")
+
+for c in extra_comments_list:
+    recent_comments.append({
+        "author": c.get("author", ""),
+        "post_id": int(c.get("post_id", 0)),
+        "content": c.get("comment", "")[:50],
+        "date": c.get("date", "")
+    })
+
+# Sort recent comments by date descending and limit to 5
+recent_comments.sort(key=lambda x: x["date"] if x["date"] else "", reverse=True)
+recent_comments = recent_comments[:5]
+
 # Unique Taxonomies for linking
 unique_categories = {}
 unique_tags = {}
@@ -755,7 +777,21 @@ for post in posts:
         WHERE comment_post_ID = ? AND comment_approved = 1
         ORDER BY comment_date ASC
     """, (post["id"],))
-    comments = cursor.fetchall()
+    comments = list(cursor.fetchall())
+
+    # Merge with extra comments from approved_comments/approved.json
+    post_extra_comments = []
+    for c in extra_comments_list:
+        if str(c.get("post_id")) == str(post["id"]):
+            post_extra_comments.append((
+                c.get("author", ""),
+                c.get("comment", ""),
+                c.get("date", "")
+            ))
+    
+    comments = comments + post_extra_comments
+    # Sort comments by date ascending
+    comments.sort(key=lambda x: x[2] if x[2] else "")
 
     comments_html = ""
     if comments:
