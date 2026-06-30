@@ -11,3 +11,4 @@ extracted/
 .gemini/
 .DS_Store
 *.log
+.vercel
