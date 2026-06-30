@@ -12,3 +12,9 @@ extracted/
 .DS_Store
 *.log
 .vercel
+
+# WordPress migration leftovers - never deploy these
+/extracted/
+*.tar
+*.sql
+/wp-content/
