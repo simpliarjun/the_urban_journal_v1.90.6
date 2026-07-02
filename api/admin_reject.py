@@ -1,5 +1,7 @@
 import os
+import re
 import json
+import hmac
 import base64
 import urllib.request
 from http.server import BaseHTTPRequestHandler
@@ -13,6 +15,9 @@ ADMIN_PASS = os.environ.get("ADMIN_PASS", "")
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "")
 GITHUB_REPO = os.environ.get("GITHUB_REPO", "simpliarjun/the_urban_journal_v1.90.6")
 
+# Filename validation pattern: only safe characters for JSON filenames
+_SAFE_FILENAME_RE = re.compile(r'^[a-zA-Z0-9_\-]+\.json$')
+
 
 def _is_authorized(auth_header):
     """Verify Basic Auth credentials."""
@@ -21,7 +26,7 @@ def _is_authorized(auth_header):
     try:
         decoded = base64.b64decode(auth_header.split(" ", 1)[1]).decode("utf-8")
         user, pwd = decoded.split(":", 1)
-        return user in ADMIN_EMAILS and pwd == ADMIN_PASS
+        return user in ADMIN_EMAILS and hmac.compare_digest(pwd, ADMIN_PASS)
     except Exception:
         return False
 
@@ -63,6 +68,9 @@ class handler(BaseHTTPRequestHandler):
                 raise ValueError("GITHUB_TOKEN environment variable not set.")
 
             if filename:
+                # Validate filename to prevent path traversal
+                if not _SAFE_FILENAME_RE.match(filename):
+                    raise ValueError("Invalid filename format.")
                 # Reject a pending comment — delete file from GitHub repo
                 file_url = f"https://api.github.com/repos/{GITHUB_REPO}/contents/pending_comments/{filename}"
                 file_info = _github_api(file_url)

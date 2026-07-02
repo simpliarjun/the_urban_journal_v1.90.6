@@ -18,3 +18,4 @@ extracted/
 *.tar
 *.sql
 /wp-content/
+.env*

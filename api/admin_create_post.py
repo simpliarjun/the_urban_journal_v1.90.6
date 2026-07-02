@@ -1,6 +1,7 @@
 import os
 import re
 import json
+import hmac
 import base64
 import datetime
 import urllib.request
@@ -23,7 +24,7 @@ def _is_authorized(auth_header):
     try:
         decoded = base64.b64decode(auth_header.split(" ", 1)[1]).decode("utf-8")
         user, pwd = decoded.split(":", 1)
-        return user in ADMIN_EMAILS and pwd == ADMIN_PASS
+        return user in ADMIN_EMAILS and hmac.compare_digest(pwd, ADMIN_PASS)
     except Exception:
         return False
 

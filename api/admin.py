@@ -1,5 +1,6 @@
 import os
 import json
+import hmac
 import base64
 import sqlite3
 import urllib.request
@@ -25,7 +26,7 @@ def _is_authorized(auth_header):
     try:
         decoded = base64.b64decode(auth_header.split(" ", 1)[1]).decode("utf-8")
         user, pwd = decoded.split(":", 1)
-        return user in ADMIN_EMAILS and pwd == ADMIN_PASS
+        return user in ADMIN_EMAILS and hmac.compare_digest(pwd, ADMIN_PASS)
     except Exception:
         return False
 
@@ -166,6 +167,7 @@ class handler(BaseHTTPRequestHandler):
 
         self.send_response(200)
         self.send_header("Content-Type", "application/json")
-        self.send_header("Access-Control-Allow-Origin", "*")
+        # CORS restricted to production domain only (no wildcard)
+        self.send_header("Access-Control-Allow-Origin", "https://the-urban-journal.com")
         self.end_headers()
         self.wfile.write(json.dumps(response_data).encode("utf-8"))

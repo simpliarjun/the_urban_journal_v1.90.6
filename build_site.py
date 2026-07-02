@@ -3,10 +3,11 @@ import os
 import re
 import glob
 import datetime
+import html as html_mod
 
-# Paths
-db_path = "/Users/arjungupta/.gemini/antigravity-ide/brain/06024764-27c8-47f9-83ce-3f38b4c267d4/scratch/backup.db"
-output_dir = "/Users/arjungupta/Downloads/TUJ_Backup/public"
+# Paths — use environment variables with sensible defaults for Vercel build
+db_path = os.environ.get("BUILD_DB_PATH", os.path.join(os.path.dirname(os.path.abspath(__file__)), "backup.db"))
+output_dir = os.environ.get("BUILD_OUTPUT_DIR", os.path.join(os.path.dirname(os.path.abspath(__file__)), "public"))
 
 # Connect to DB
 conn = sqlite3.connect(db_path)
@@ -515,7 +516,7 @@ def get_sidebar_html(prefix):
                 if p["id"] == comment["post_id"]:
                     p_slug = p["slug"]
                     break
-            recent_comments_html += f'<li class="recentcomments"><span class="comment-author-link">{comment["author"]}</span> on <a href="{prefix}{p_slug}/index.html">{comment["content"]}...</a></li>'
+            recent_comments_html += f'<li class="recentcomments"><span class="comment-author-link">{html_mod.escape(comment["author"])}</span> on <a href="{prefix}{p_slug}/index.html">{html_mod.escape(comment["content"])}...</a></li>'
     else:
         recent_comments_html = "<li>No comments yet</li>"
         
@@ -768,11 +769,11 @@ for post in posts:
             comments_html += f"""
             <li class="comment-item" style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #f0f0f0;">
                 <div class="comment-meta" style="margin-bottom: 8px;">
-                    <strong class="comment-author" style="font-size: 16px; color: #111;">{author}</strong>
+                    <strong class="comment-author" style="font-size: 16px; color: #111;">{html_mod.escape(author)}</strong>
                     <span class="comment-date" style="font-size: 13px; color: #888; margin-left: 10px;">{c_formatted_date}</span>
                 </div>
                 <div class="comment-content" style="font-size: 15px; color: #444; line-height: 1.6; text-align: justify;">
-                    <p style="margin: 0;">{content_text}</p>
+                    <p style="margin: 0;">{html_mod.escape(content_text)}</p>
                 </div>
             </li>
             """

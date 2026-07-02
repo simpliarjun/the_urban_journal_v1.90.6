@@ -2,6 +2,8 @@ import os
 import re
 import sys
 import json
+import html as html_mod
+import hmac
 import sqlite3
 import time
 import datetime
@@ -12,8 +14,9 @@ import base64
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
 PORT = int(os.getenv("ADMIN_PORT", "8081"))
-DB_PATH = "/Users/arjungupta/.gemini/antigravity-ide/brain/06024764-27c8-47f9-83ce-3f38b4c267d4/scratch/backup.db"
-WORKSPACE_DIR = "/Users/arjungupta/Downloads/TUJ_Backup"
+# Use environment variable or relative path for database
+DB_PATH = os.getenv("ADMIN_DB_PATH", os.path.join(os.path.dirname(os.path.abspath(__file__)), "backup.db"))
+WORKSPACE_DIR = os.getenv("ADMIN_WORKSPACE_DIR", os.path.dirname(os.path.abspath(__file__)))
 
 # Add api directory to path to import serverless functions for local testing
 sys.path.append(os.path.join(WORKSPACE_DIR, "api"))
@@ -45,11 +48,23 @@ def push_to_github(commit_message):
         return False
 
 class AdminHTTPRequestHandler(BaseHTTPRequestHandler):
-    # Allowed credentials (email:password) encoded in base64 for basic auth
-    _allowed_credentials = {
-        "shivanip1906@gmail.com": "Shivani@1906",
-        "arjunnitin9@gmail.com": "Shivani@1906"
-    }
+    # Admin credentials loaded from environment variables — never hardcode secrets
+    _allowed_credentials = None
+
+    @classmethod
+    def _get_credentials(cls):
+        if cls._allowed_credentials is None:
+            email1 = os.environ.get("ADMIN_EMAIL_1", "")
+            email2 = os.environ.get("ADMIN_EMAIL_2", "")
+            password = os.environ.get("ADMIN_PASS", "")
+            cls._allowed_credentials = {}
+            if email1 and password:
+                cls._allowed_credentials[email1] = password
+            if email2 and password:
+                cls._allowed_credentials[email2] = password
+            if not cls._allowed_credentials:
+                print("WARNING: No admin credentials configured. Set ADMIN_EMAIL_1, ADMIN_EMAIL_2, and ADMIN_PASS environment variables.")
+        return cls._allowed_credentials
 
     def _is_authorized(self):
         auth_header = self.headers.get('Authorization')
@@ -62,8 +77,10 @@ class AdminHTTPRequestHandler(BaseHTTPRequestHandler):
             username, password = decoded.split(':', 1)
         except Exception:
             return False
-        expected_password = self._allowed_credentials.get(username)
-        return expected_password == password
+        expected_password = self._get_credentials().get(username)
+        if expected_password is None:
+            return False
+        return hmac.compare_digest(password, expected_password)
 
     def _require_auth(self):
         if not self._is_authorized():
@@ -91,8 +108,14 @@ class AdminHTTPRequestHandler(BaseHTTPRequestHandler):
             verify_comment.handler(self.request, self.client_address, self.server)
             
         else:
-            # Serve static files from workspace
+            # Serve static files from workspace — with path traversal protection
             file_path = os.path.join(WORKSPACE_DIR, parsed_path.path.lstrip('/'))
+            # Resolve symlinks and verify the path is within WORKSPACE_DIR
+            real_path = os.path.realpath(file_path)
+            real_workspace = os.path.realpath(WORKSPACE_DIR)
+            if not real_path.startswith(real_workspace + os.sep) and real_path != real_workspace:
+                self.send_error(403, "Access denied")
+                return
             if os.path.isdir(file_path):
                 file_path = os.path.join(file_path, "index.html")
                 
@@ -729,6 +752,14 @@ class AdminHTTPRequestHandler(BaseHTTPRequestHandler):
     <script>
         let commentData = { pending: [], approved: [] };
         
+        // Escape HTML to prevent XSS from user-generated content
+        function escapeHtml(str) {
+            if (!str) return '';
+            const div = document.createElement('div');
+            div.appendChild(document.createTextNode(str));
+            return div.innerHTML;
+        }
+        
         function fetchComments() {
             fetch('/api/data')
                 .then(res => res.json())
@@ -750,13 +781,13 @@ class AdminHTTPRequestHandler(BaseHTTPRequestHandler):
                 pendingList.innerHTML = commentData.pending.map(c => `
                     <li class="comment-item">
                         <div class="comment-meta">
-                            <span class="comment-author">${c.author} (${c.email})</span>
-                            <span class="comment-post">on Post ID: ${c.post_id}</span>
+                            <span class="comment-author">${escapeHtml(c.author)} (${escapeHtml(c.email)})</span>
+                            <span class="comment-post">on Post ID: ${escapeHtml(String(c.post_id))}</span>
                         </div>
-                        <div class="comment-content">${c.comment}</div>
+                        <div class="comment-content">${escapeHtml(c.comment)}</div>
                         <div class="comment-actions">
-                            <button class="btn btn-success" onclick="approveComment('${c.filename}')">Approve</button>
-                            <button class="btn btn-danger" onclick="rejectComment('${c.filename}', null)">Reject</button>
+                            <button class="btn btn-success" onclick="approveComment('${escapeHtml(c.filename)}')">Approve</button>
+                            <button class="btn btn-danger" onclick="rejectComment('${escapeHtml(c.filename)}', null)">Reject</button>
                         </div>
                     </li>
                 `).join('');
@@ -769,11 +800,11 @@ class AdminHTTPRequestHandler(BaseHTTPRequestHandler):
                 approvedList.innerHTML = commentData.approved.map(c => `
                     <li class="comment-item">
                         <div class="comment-meta">
-                            <span class="comment-author">${c.author} (${c.email})</span>
-                            <span class="comment-post">on "${c.post_title}"</span>
+                            <span class="comment-author">${escapeHtml(c.author)} (${escapeHtml(c.email)})</span>
+                            <span class="comment-post">on "${escapeHtml(c.post_title)}"</span>
                         </div>
-                        <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 8px;">Published: ${c.date}</div>
-                        <div class="comment-content">${c.comment}</div>
+                        <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 8px;">Published: ${escapeHtml(c.date)}</div>
+                        <div class="comment-content">${escapeHtml(c.comment)}</div>
                         <div class="comment-actions">
                             <button class="btn btn-danger" onclick="rejectComment(null, ${c.id})">Delete</button>
                         </div>

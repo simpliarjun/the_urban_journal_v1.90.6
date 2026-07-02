@@ -1,5 +1,6 @@
 import os
 import json
+import html as html_mod
 import time
 import hmac
 import hashlib
@@ -8,17 +9,31 @@ import urllib.request
 import urllib.parse
 from http.server import BaseHTTPRequestHandler
 
-SECRET_KEY = os.environ.get("COMMENT_SECRET_KEY", "tuj-default-secure-key-987654321").encode("utf-8")
+# Secret key — MUST be set via environment variable
+_secret_raw = os.environ.get("COMMENT_SECRET_KEY", "")
+if not _secret_raw:
+    print("WARNING: COMMENT_SECRET_KEY is not set. Comment verification will be disabled.")
+SECRET_KEY = _secret_raw.encode("utf-8") if _secret_raw else None
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "")
 GITHUB_REPO = os.environ.get("GITHUB_REPO", "simpliarjun/the_urban_journal")
 
+# Token expiry: 24 hours
+TOKEN_MAX_AGE_SECONDS = 24 * 60 * 60
+
 def verify_data(token):
+    if not SECRET_KEY:
+        return None
     try:
         payload = json.loads(base64.b64decode(token.encode("utf-8")).decode("utf-8"))
         serialized = base64.b64decode(payload["data"].encode("utf-8"))
         expected_sig = hmac.new(SECRET_KEY, serialized, hashlib.sha256).hexdigest()
         if hmac.compare_digest(payload["sig"], expected_sig):
-            return json.loads(serialized.decode("utf-8"))
+            data = json.loads(serialized.decode("utf-8"))
+            # Check token expiry
+            token_ts = data.get("timestamp", 0)
+            if (int(time.time()) - token_ts) > TOKEN_MAX_AGE_SECONDS:
+                return None  # Token expired
+            return data
     except Exception:
         return None
 
@@ -35,7 +50,7 @@ class handler(BaseHTTPRequestHandler):
             
         comment_data = verify_data(token)
         if not comment_data:
-            self.send_error_response("Invalid or expired verification token.")
+            self.send_error_response("Invalid or expired verification token. Tokens are valid for 24 hours.")
             return
             
         # Add verification timestamp
@@ -102,7 +117,7 @@ class handler(BaseHTTPRequestHandler):
         </head>
         <body>
             <div class="card">
-                <h1>Thank You, {author}!</h1>
+                <h1>Thank You, {html_mod.escape(author)}!</h1>
                 <p>Your email has been verified and your comment has been submitted to the moderation queue. It will appear on the website once approved by the administrator.</p>
                 <a href="/" class="btn">Go to Home</a>
             </div>
@@ -132,7 +147,7 @@ class handler(BaseHTTPRequestHandler):
         <body>
             <div class="card">
                 <h1>Verification Failed</h1>
-                <p>{error_message}</p>
+                <p>{html_mod.escape(error_message)}</p>
                 <a href="/" class="btn" style="background: #111;">Go to Home</a>
             </div>
         </body>

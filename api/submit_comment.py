@@ -1,4 +1,5 @@
 import json
+import html
 import os
 import time
 import hmac
@@ -7,11 +8,21 @@ import base64
 import urllib.request
 from http.server import BaseHTTPRequestHandler
 
-# Secure secret key for signing comment tokens (can be set via env, otherwise fallback)
-SECRET_KEY = os.environ.get("COMMENT_SECRET_KEY", "tuj-default-secure-key-987654321").encode("utf-8")
+# Secure secret key for signing comment tokens — MUST be set via environment variable
+_secret_raw = os.environ.get("COMMENT_SECRET_KEY", "")
+if not _secret_raw:
+    print("WARNING: COMMENT_SECRET_KEY is not set. Comment verification will be disabled.")
+SECRET_KEY = _secret_raw.encode("utf-8") if _secret_raw else None
 RESEND_API_KEY = os.environ.get("RESEND_API_KEY", "")
 
+# Input validation limits
+MAX_AUTHOR_LEN = 100
+MAX_EMAIL_LEN = 254
+MAX_COMMENT_LEN = 2000
+
 def sign_data(data):
+    if not SECRET_KEY:
+        raise RuntimeError("COMMENT_SECRET_KEY is not configured. Cannot sign tokens.")
     serialized = json.dumps(data).encode("utf-8")
     signature = hmac.new(SECRET_KEY, serialized, hashlib.sha256).hexdigest()
     payload = {
@@ -34,6 +45,14 @@ class handler(BaseHTTPRequestHandler):
             
             if not all([post_id, author, email, comment]):
                 raise ValueError("All fields (post_id, author, email, comment) are required.")
+
+            # Input length validation
+            if len(author) > MAX_AUTHOR_LEN:
+                raise ValueError(f"Author name must be {MAX_AUTHOR_LEN} characters or fewer.")
+            if len(email) > MAX_EMAIL_LEN:
+                raise ValueError(f"Email must be {MAX_EMAIL_LEN} characters or fewer.")
+            if len(comment) > MAX_COMMENT_LEN:
+                raise ValueError(f"Comment must be {MAX_COMMENT_LEN} characters or fewer.")
                 
             # Create signing payload
             payload = {
@@ -58,7 +77,7 @@ class handler(BaseHTTPRequestHandler):
                     "html": f"""
                     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; border-radius: 8px;">
                         <h2 style="color: #111; font-family: 'Times New Roman', serif;">Verify Your Comment</h2>
-                        <p>Hello {author},</p>
+                        <p>Hello {html.escape(author)},</p>
                         <p>Thank you for sharing your thoughts on The Urban Journal. Please click the button below to verify your email and submit your comment for moderation:</p>
                         <div style="text-align: center; margin: 30px 0;">
                             <a href="{verification_url}" style="background: #111; color: #fff; text-decoration: none; padding: 12px 24px; font-weight: bold; border-radius: 4px; display: inline-block;">Verify Comment</a>
